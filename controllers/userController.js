@@ -16,7 +16,16 @@ const loginUser = (req, res) => {
     console.log(username, password)
 }
 
+// @ '/register'
+// @ POST
+// @ PUBLIC
+const registerUser = (req, res) => {
+    const {email, username, password} = req.body
+    console.log(email, username, password)
+}
+
 module.exports = {
     loginPage,
     loginUser,
+    registerUser,
 }
