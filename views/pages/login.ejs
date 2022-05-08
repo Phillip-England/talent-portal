@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/styles.ejs') %> 
+    <title>Login</title>
+</head>
+<body NODE_ENV=<%= NODE_ENV %>>
+
+    <div id="wrapper-login-page">
+
+        <div id="wrapper-login-form">
+            <form onsubmit="event.preventDefault(), form.postForm(this, url.getURL('/login'))">
+                <h1>Login</h1>
+                <label for="username">Username</label>
+                <input type="text" name="username">
+                <label for="password">Password</label>
+                <input type="password" name="password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div id="wrapper-register-form">
+            <form onsubmit="event.preventDefault()">
+                <h1>Register</h1>
+                <label for="email">Email</label>
+                <input type="text" name="email">
+                <label for="username" name="username">Username</label>
+                <input type="email">
+                <label for="password" name="password">Password</label>
+                <input type="password">
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+    </div>
+    
+    <%- include('../partials/scripts.ejs') %> 
+</body>
+</html>
