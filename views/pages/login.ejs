@@ -14,9 +14,15 @@
         <div id="wrapper-login-form">
             <form onsubmit="event.preventDefault(), form.postForm(this, url.getURL('/login'))">
                 <h1>Login</h1>
-                <label for="username">Username</label>
+                <label for="username">
+                    Username
+                    <span class="color-red display-none">*</span>
+                </label>
                 <input type="text" name="username">
-                <label for="password">Password</label>
+                <label for="password">
+                    Password
+                    <span class="color-red display-none">*</span>
+                </label>
                 <input type="password" name="password">
                 <button type="submit">Login</button>
             </form>
@@ -25,11 +31,20 @@
         <div id="wrapper-register-form">
             <form onsubmit="event.preventDefault(), form.postForm(this, url.getURL('/register'))">
                 <h1>Register</h1>
-                <label for="email">Email</label>
+                <label for="email">
+                    Email
+                    <span class="color-red display-none">*</span>
+                </label>
                 <input type="email" name="email">
-                <label for="username">Username</label>
+                <label for="username">
+                    Username
+                    <span class="color-red display-none">*</span>
+                </label>
                 <input type="text" name="username">
-                <label for="password">Password</label>
+                <label for="password">
+                    Password
+                    <span class="color-red display-none">*</span>
+                </label>
                 <input type="password" name="password">
                 <button type="submit">Register</button>
             </form>
