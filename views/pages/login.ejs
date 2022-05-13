@@ -12,40 +12,41 @@
     <div id="wrapper-login-page">
 
         <div id="wrapper-login-form">
-            <form onsubmit="event.preventDefault(), form.postForm(this, url.getURL('/login'))">
+            <form onsubmit="event.preventDefault(), jsForm.postForm(this, url.getURL('/login'))">
                 <h1>Login</h1>
+                <p>Error Message</p>
                 <label for="username">
                     Username
                     <span class="color-red display-none">*</span>
                 </label>
-                <input type="text" name="username">
+                <input type="text" name="username" oninput="jsForm.validateUsername(this)">
                 <label for="password">
                     Password
                     <span class="color-red display-none">*</span>
                 </label>
-                <input type="password" name="password">
+                <input type="password" name="password" >
                 <button type="submit">Login</button>
             </form>
         </div>
         
         <div id="wrapper-register-form">
-            <form onsubmit="event.preventDefault(), form.postForm(this, url.getURL('/register'))">
+            <form onsubmit="event.preventDefault(), jsForm.postForm(this, url.getURL('/register'))">
                 <h1>Register</h1>
                 <label for="email">
                     Email
                     <span class="color-red display-none">*</span>
                 </label>
-                <input type="email" name="email">
+                <input type="email" name="email" >
                 <label for="username">
                     Username
                     <span class="color-red display-none">*</span>
                 </label>
-                <input type="text" name="username">
+                <input type="text" name="username" >
                 <label for="password">
                     Password
                     <span class="color-red display-none">*</span>
                 </label>
-                <input type="password" name="password">
+                <input type="password" name="password" >
                 <button type="submit">Register</button>
             </form>
         </div>
