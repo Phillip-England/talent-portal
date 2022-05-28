@@ -2,6 +2,8 @@ const express = require('express')
 const dotenv = require('dotenv').config()
 const path = require('path')
 const cookieParser = require('cookie-parser')
+const mongoose = require('mongoose')
+
 const PORT = process.env.PORT || 5000
 const connectDB = require('./config/db')
 

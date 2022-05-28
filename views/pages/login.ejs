@@ -30,13 +30,13 @@
         </div>
         
         <div id="wrapper-register-form">
-            <form onsubmit="event.preventDefault(), jsForm.postForm(this, url.getURL('/register'))">
+            <form method="POST" action="/register">
                 <h1>Register</h1>
                 <label for="email">
                     Email
                     <span class="color-red display-none">*</span>
                 </label>
-                <input type="email" name="email" >
+                <input type="text" name="email">
                 <label for="username">
                     Username
                     <span class="color-red display-none">*</span>
