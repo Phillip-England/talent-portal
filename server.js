@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 //routes
-app.use('/', require('./routes/userRoutes'))
+app.use('/user', require('./routes/userRoutes'))
 
 //catching all bad routes and sending user home
 app.get('*', (req, res) => {

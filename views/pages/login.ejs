@@ -9,49 +9,13 @@
 </head>
 <body NODE_ENV=<%= NODE_ENV %>>
 
-    <div id="wrapper-login-page">
+    <main>
 
-        <div id="wrapper-login-form">
-            <form onsubmit="event.preventDefault(), jsForm.postForm(this, url.getURL('/login'))">
-                <h1>Login</h1>
-                <p>Error Message</p>
-                <label for="username">
-                    Username
-                    <span class="color-red display-none">*</span>
-                </label>
-                <input type="text" name="username" oninput="jsForm.validateUsername(this)">
-                <label for="password">
-                    Password
-                    <span class="color-red display-none">*</span>
-                </label>
-                <input type="password" name="password" >
-                <button type="submit">Login</button>
-            </form>
-        </div>
+        <%- include('../partials/pages/login/loginForm.ejs') %> 
         
-        <div id="wrapper-register-form">
-            <form method="POST" action="/register">
-                <h1>Register</h1>
-                <label for="email">
-                    Email
-                    <span class="color-red display-none">*</span>
-                </label>
-                <input type="text" name="email">
-                <label for="username">
-                    Username
-                    <span class="color-red display-none">*</span>
-                </label>
-                <input type="text" name="username" >
-                <label for="password">
-                    Password
-                    <span class="color-red display-none">*</span>
-                </label>
-                <input type="password" name="password" >
-                <button type="submit">Register</button>
-            </form>
-        </div>
-
-    </div>
+        <%- include('../partials/pages/login/registerForm.ejs') %> 
+        
+    </main>
     
     <%- include('../partials/scripts.ejs') %> 
 </body>

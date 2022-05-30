@@ -1,15 +1,26 @@
 const bcrypt = require('bcrypt')
 const User = require('../../models/userModel')
+const EmailActivation = require('../../models/emailActivationModel')
 const validator = require('validator')
+const nodemailer = require('nodemailer')
+const crypto = require('crypto')
 const chars = require('../../service/chars')
 const sanitize = require('../../service/sanitize')
 const valid = require('../../service/valid')
 
-// @ '/register'
 // @ POST
+// @ '/register'
 // @ PUBLIC
 const createUser = async (req, res) => {
     try {
+        //setting up variables
+        let activation
+        let randomByte
+        let newUser
+        let errorSource
+        let transporter
+        let activationUrl
+        let info
         //grabbing expected inputs from req.body
         const {email, username, password} = req.body
         //checking if the user already exists
@@ -37,31 +48,40 @@ const createUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(sanitizedPassword, salt)
         //creating a new user object
-        let newUser = new User({
+        newUser = await User.create({
             email: sanitizedEmail,
             username: sanitizedUsername,
             password: hashedPassword
         })
-        // handling any validation errors that occur in our User model
-        newUser.save((err) =>{
-            if (err) {
-                let errorSource = Object.keys(err.errors)[0]
-                res.status(400).json({
-                    error: err.errors[errorSource].message
-                })
-            } else {
-                //if no validation errors occur, return the new user as json
-                res.status(200).json({
-                    user: newUser
-                })
+        //storing our random byte in database
+        activation = await EmailActivation.create({
+            user: newUser._id,
+            randomString: chars.randAplha(64)
+        })
+        console.log(activation)
+        //setting up an email transporter
+        transporter = nodemailer.createTransport({
+            host: "smtp-mail.outlook.com",
+            auth: {
+                user: process.env.EMAIL_ADDRESS,
+                pass: process.env.EMAIL_PASSWORD
             }
         })
-
-    } catch (error) {
-        res.status(400).json({
-            error: error.message
+        //create unique url for account activation
+        activationUrl = 'http://' + req.get('host') + '/user' + '/activate' + '/' + activation.randomString
+        //emailing the activation url to our client
+        info = await transporter.sendMail({
+            from: process.env.EMAIL_ADDRESS,
+            to: newUser.email,
+            subject: "Activate Your Account",
+            html: `<a href=${activationUrl}>${activationUrl}</a>`
         })
-        console.log(error.message)
+    } catch (error) {
+        //returning any errors as json
+        res.status(400).json({
+            error: error
+        })
+        console.log(error)
     }
     
 
