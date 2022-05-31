@@ -7,9 +7,13 @@
     <%- include('../partials/styles.ejs') %> 
     <title>Login</title>
 </head>
-<body NODE_ENV=<%= NODE_ENV %>>
+<body>
 
     <main>
+
+        <% if (activationMessage == true) { %>
+            <%- include('../partials/pages/login/activationMessage.ejs') %> 
+        <% } %>
 
         <%- include('../partials/pages/login/loginForm.ejs') %> 
         
