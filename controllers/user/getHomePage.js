@@ -7,7 +7,9 @@ const getHomePage = async (req, res) => {
             user: req.user
         })
     } else {
-        res.render('login.ejs')
+        res.render('login.ejs', {
+            activationMessage: false
+        })
     }
 }
 

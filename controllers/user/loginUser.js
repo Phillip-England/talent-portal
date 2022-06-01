@@ -1,6 +1,7 @@
 const User = require('../../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const cookies = require('../../service/cookies')
 
 // @ POST
 // @ '/user/login'
@@ -25,14 +26,12 @@ const loginUser = async (req, res) => {
         }
         //checking if the username and password come from the same user
         if (user && (await bcrypt.compare(password, user.password))){
-            //creating a JWT token associated with our user
+            //creating a jwt token
             const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET)
-            //creating a cookie with our token stored inside
-            res.cookie('token', token, {
-                maxAge: 1000*60*30,
-                httpOnly: true,
-                signed: true
-            })
+            //creating a cookie with our jwt token stored inside
+            const jwtCookie = cookies.jwtToken(res, token)
+            //creating a refresh token to keep our user logged in
+            const refreshCookie = cookies.refreshToken(res, token)
             //redirecting to our homepage
             res.redirect('/user/home')
         } else {

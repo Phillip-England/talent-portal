@@ -6,9 +6,8 @@ const jwt = require('jsonwebtoken')
 // @ PUBLIC
 const getLoginPage = async (req, res) => {
     //checking if we have a cookie
-    console.log(req.signedCookies.token)
-    if (req.signedCookies.token){
-        const decoded = jwt.verify(req.signedCookies.token, process.env.JWT_SECRET)
+    if (req.signedCookies.jwt_token){
+        const decoded = jwt.verify(req.signedCookies.jwt_token, process.env.JWT_SECRET)
         const user = await User.findById(decoded._id).select('-password')
         res.render('home.ejs', {
             user: user
