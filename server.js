@@ -20,10 +20,13 @@ app.use(express.urlencoded({extended:false}))
 
 //routes
 app.use('/user', require('./routes/userRoutes'))
+app.use('/candidates', require('./routes/candidateRoutes'))
+app.use('/questions', require('./routes/questionRoutes'))
+app.use('/interviewers', require('./routes/interviewerRoutes'))
 
 //catching all bad routes and sending user home
 app.get('*', (req, res) => {
-    res.redirect('/')
+    res.redirect('/user/login')
 })
 
 app.listen(PORT, () => {

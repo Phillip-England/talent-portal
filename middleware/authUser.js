@@ -8,7 +8,6 @@ const authUser = async (req, res, next) => {
         //checking if our cookie has expired AND if our refresh token is still active
         //if the user stays inactive for 5 minutes after the original JWT expires, then the refresh token will expire as well
         if (req.signedCookies.jwt_token == undefined && req.signedCookies.refresh_token != undefined){
-            console.log('testing refresh token')
             //getting the user from the refresh token
             const decoded = jwt.verify(req.signedCookies.refresh_token, process.env.JWT_SECRET)
             req.user = await User.findById(decoded._id).select('-password')
@@ -23,10 +22,8 @@ const authUser = async (req, res, next) => {
             //going to our next function attached to our route
             next()
         } else {
-            console.log('acting as normal')
             //if our jwt token is not expired, simply get our user from the token and move forward
             const decoded = jwt.verify(req.signedCookies.jwt_token, process.env.JWT_SECRET)
-            console.log(decoded)
             req.user = await User.findById(decoded._id).select('-password')
             next()
         }

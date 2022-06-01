@@ -14,7 +14,6 @@ const deleteAllEmailActivations = require('../controllers/user/deleteAllEmailAct
 const getHomePage = require('../controllers/user/getHomePage')
 const logoutUser = require('../controllers/user/logoutUser')
 
-
 //GET
 router.get('/login', getLoginPage)
 router.get('/activate/:randomString', activateAccount)
