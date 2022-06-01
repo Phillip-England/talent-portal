@@ -12,6 +12,7 @@ const activateAccount = require('../controllers/user/activateAccount')
 const deleteAllUsers = require('../controllers/user/deleteAllUsers')
 const deleteAllEmailActivations = require('../controllers/user/deleteAllEmailActivations')
 const getHomePage = require('../controllers/user/getHomePage')
+const logoutUser = require('../controllers/user/logoutUser')
 
 
 //GET
@@ -20,6 +21,7 @@ router.get('/activate/:randomString', activateAccount)
 router.get('/delete/all', deleteAllUsers)
 router.get('/activate/delete/all', deleteAllEmailActivations)
 router.get('/home', authUser, csrfProtection, getHomePage)
+router.get('/logout', logoutUser)
 
 //POST
 router.post('/register', createUser)
