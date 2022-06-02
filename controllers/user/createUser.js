@@ -2,8 +2,6 @@ const bcrypt = require('bcrypt')
 const User = require('../../models/userModel')
 const EmailActivation = require('../../models/emailActivationModel')
 const validator = require('validator')
-const nodemailer = require('nodemailer')
-const crypto = require('crypto')
 const chars = require('../../service/chars')
 const sanitize = require('../../service/sanitize')
 const valid = require('../../service/valid')
@@ -21,7 +19,7 @@ const createUser = async (req, res) => {
         let activationUrl
         let activationEmail
         //grabbing expected inputs from req.body
-        const {email, username, password} = req.body
+        let {email, username, password} = req.body
         //checking if a email was provided
         if (!email) {
             throw new Error('Please provide an email')
@@ -78,16 +76,17 @@ const createUser = async (req, res) => {
             throw new Error('Password must contain at least one symbol (!, @, #, ect.)')
         }
         //sanitizing inputs
-        const sanitizedEmail = sanitize.escapeAndTrim(email)
-        const sanitizedUsername = sanitize.escapeAndTrim(username)
-        const sanitizedPassword = validator.escape(password)
+        email = sanitize.escapeAndTrim(email)
+        email = validator.normalizeEmail(email)
+        username = sanitize.escapeAndTrim(username)
+        password = validator.escape(password)
         //hashing our password
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(sanitizedPassword, salt)
         //creating a new user object
         newUser = await User.create({
-            email: sanitizedEmail,
-            username: sanitizedUsername,
+            email: email,
+            username: username,
             password: hashedPassword
         })
         //storing our random byte in database

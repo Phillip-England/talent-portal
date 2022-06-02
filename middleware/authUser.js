@@ -29,7 +29,7 @@ const authUser = async (req, res, next) => {
         }
     } catch (error) {
         //if our jwt_token and our refresh_token have expired, go back to login page
-        // res.redirect('/user/login')
+        res.redirect('/user/login')
     }
     
 }

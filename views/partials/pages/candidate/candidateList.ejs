@@ -1,0 +1,33 @@
+<section>
+
+    <% candidates.forEach(candidate => { %>
+        
+        <form>
+
+            <h3><%= candidate.firstName %> <%= candidate.lastName %></h3>
+
+            <% if (candidate.email == '') { %>
+                <p>No email provided</p>
+            <% } else { %> 
+                <p><%= candidate.email %></p>
+            <% } %>
+
+            <label for="email" class="hide">Email</label>
+            <input type="text" class="hide" value=<%= candidate.email %>>
+
+            <% if (candidate.phone == '') { %>
+                <p>No phone number provided</p>
+            <% } else { %> 
+                <p><%= candidate.phone %></p>
+            <% } %>
+
+            <label for="email" class="hide">Phone</label>
+            <input type="text" class="hide" value=<%= candidate.email %>>
+
+            <button type="submit">Update</button>
+
+        </form>
+
+    <% }) %>
+
+</section>

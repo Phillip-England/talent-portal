@@ -1,0 +1,39 @@
+<section>
+
+    <form method="POST" action="/candidates/add-candidate">
+
+        <h1>Add a Candidate</h1>
+
+        <p>Error Message</p>
+
+        <label for="first_name">
+            First Name
+            <span>*</span>
+        </label>
+        <input type="text" name="first_name">
+
+        <label for="last_name">
+            Last Name
+            <span>*</span>
+        </label>
+        <input type="text" name="last_name">
+
+        <label for="email">
+            Email
+            <span>*</span>
+        </label>
+        <input type="text" name="email">
+
+        <label for="phone">
+            Phone
+            <span>*</span>
+        </label>
+        <input type="tel" name="phone">
+
+        <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+
+        <button type="submit">Add</button>
+
+    </form>
+    
+</section>
