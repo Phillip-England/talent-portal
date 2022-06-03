@@ -8,7 +8,7 @@ const csrfProtection = csurf({cookie: {httpOnly: true}})
 const getQuestionPage = require('../controllers/question/getQuestionPage')
 
 //GET
-router.get('/', getQuestionPage)
+router.get('/', authUser, csrfProtection, getQuestionPage)
 
 //POST
 

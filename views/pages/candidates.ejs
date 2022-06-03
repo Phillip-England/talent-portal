@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('../partials/styles.ejs') %>
+    <%- include('../partials/general/styles.ejs') %>
     <title>Candidates</title>
 </head>
 <body>
 
     <%- include('../partials/pages/multiple/nav.ejs') %> 
 
-    <p>this page will allow us to add, view, update, delete, and access each candidate profile</p>
-
     <%- include('../partials/pages/candidate/addCandidateForm.ejs') %>
 
     <%- include('../partials/pages/candidate/candidateList.ejs') %>
 
+    <!-- general service functions -->
+    <%- include("../partials/general/scripts.ejs") %>
+
+    <!-- page specific events -->
+    <script src="../../public/events/candidate/addCandidate.js"></script>
 
 </body>
 </html>

@@ -8,7 +8,7 @@ const csrfProtection = csurf({cookie: {httpOnly: true}})
 const getInterviewerPage = require('../controllers/interviewer/getInterviewerPage')
 
 //GET
-router.get('/', getInterviewerPage)
+router.get('/', authUser, csrfProtection, getInterviewerPage)
 
 //POST
 
