@@ -3,6 +3,9 @@ html, body{
 }
 
 :root{
-    
+    --main-clr:#E51636;
+    --gray:#f2f2f2;
+    --red:#E51636;
+    --white:white;
 }
 

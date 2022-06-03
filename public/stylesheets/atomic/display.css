@@ -1,3 +1,9 @@
 .hide{
     display:none;
 }
+
+.flex-r-cnt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,34 +1,22 @@
 <section>
 
-    <form method="POST" action="/candidates/add-candidate">
+    <form id="add-candidate-form" method="POST" action="/candidates/add-candidate">
 
         <h1>Add a Candidate</h1>
 
-        <p>Error Message</p>
+        <p class="error">Error Message</p>
 
-        <label for="first_name">
-            First Name
-            <span>*</span>
-        </label>
-        <input type="text" name="first_name">
+        <label for="first_name">First Name<span class="astrick clr-red hide">*</span></label>
+        <input type="text" name="first_name" class="form-control form-required">
 
-        <label for="last_name">
-            Last Name
-            <span>*</span>
-        </label>
-        <input type="text" name="last_name">
+        <label for="last_name">Last Name<span class="astrick clr-red hide">*</span></label>
+        <input type="text" name="last_name" class="form-control form-required">
 
-        <label for="email">
-            Email
-            <span>*</span>
-        </label>
-        <input type="text" name="email">
+        <label for="email">Email</label>
+        <input type="text" name="email" class="form-control">
 
-        <label for="phone">
-            Phone
-            <span>*</span>
-        </label>
-        <input type="tel" name="phone">
+        <label for="phone">Phone</label>
+        <input type="tel" name="phone" class="form-control">
 
         <input type="hidden" name="_csrf" value=<%=csrfToken%>>
 

@@ -1,0 +1,15 @@
+
+/*REGULAR BORDERS*/
+.brd-wht-lg{
+    border: solid var(--white) 6px;
+}
+
+.brd-gray-lg{
+    border: solid var(--gray) 6px;
+}
+
+/*BORDER TOP*/
+
+.brd-top-main-lg{
+    border-top: solid var(--main-clr) 10px;
+}
