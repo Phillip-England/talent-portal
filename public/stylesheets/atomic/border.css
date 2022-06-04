@@ -1,15 +1,23 @@
 
 /*REGULAR BORDERS*/
-.brd-wht-lg{
-    border: solid var(--white) 6px;
+.b-wht-sm{
+    border: solid var(--white) var(--em-sm);
 }
 
-.brd-gray-lg{
-    border: solid var(--gray) 6px;
+.b-gray-sm{
+    border: solid var(--gray) var(--em-sm);
 }
 
 /*BORDER TOP*/
 
-.brd-top-main-lg{
-    border-top: solid var(--main-clr) 10px;
+.b-t-main-sm{
+    border-top: solid var(--main-clr) var(--em-sm);
+}
+
+.b-t-main-xxs{
+    border-top: solid var(--main-clr) var(--em-xxs);
+}
+
+.b-l-main-xs{
+    border-left: solid var(--main-clr) var(--em-xs);
 }

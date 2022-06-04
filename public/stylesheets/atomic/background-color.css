@@ -1,3 +1,16 @@
 .bg-gray{
     background-color: var(--gray);
 }
+
+.bg-white{
+    background-color: var(--white);
+}
+
+.bg-main{
+    background-color: var(--main-clr);
+}
+
+.bg-blue{
+    background-color: var(--blue);
+}
+

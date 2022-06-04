@@ -63,3 +63,30 @@
 .mar-l-xl{
     margin-left: var(--em-xl);
 }
+
+/*LEFT AND RIGHT*/
+
+.mar-lr-xs{
+    margin-left: var(--em-xs);
+    margin-right: var(--em-xs);
+}
+
+.mar-lr-sm{
+    margin-left: var(--em-sm);
+    margin-right: var(--em-sm);
+}
+
+.mar-lr-md{
+    margin-left: var(--em-md);
+    margin-right: var(--em-md);
+}
+
+.mar-lr-lg{
+    margin-left: var(--em-lg);
+    margin-right: var(--em-lg);
+}
+
+.mar-lr-xl{
+    margin-left: var(--em-xl);
+    margin-right: var(--em-xl);
+}

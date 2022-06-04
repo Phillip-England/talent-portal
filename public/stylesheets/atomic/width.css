@@ -1,11 +1,22 @@
+/*PERCENTAGES*/
+
 .w-100-pc{
     width:100%;
 }
+
+/*PIXELS*/
 
 .w-100-px{
     width: 100px;
 }
 
+/*MAX WIDTHS*/
+
 .w-max-425-px{
     max-width: 425px;
+}
+
+/*OTHER*/
+.w-fit{
+    width: fit-content;
 }

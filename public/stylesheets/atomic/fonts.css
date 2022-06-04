@@ -1,7 +1,31 @@
+/*FAMILIES*/
+
 .f-prmy{
     font-family: var(--primary-font);
 }
 
 .f-scnd{
     font-family: var(--secondary-font);
+}
+
+/*SIZES*/
+
+.f-xs{
+    font-size: var(--rem-xs);
+}
+
+.f-sm{
+    font-size: var(--rem-sm);
+}
+
+.f-md{
+    font-size: var(--rem-md);
+}
+
+.f-lg{
+    font-size: var(--rem-lg);
+}
+
+.f-xl{
+    font-size: var(--rem-xl);
 }

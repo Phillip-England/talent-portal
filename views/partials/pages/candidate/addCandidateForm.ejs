@@ -1,29 +1,35 @@
-<section class="flex-r-cnt">
+<section class="flex-r-cnt mar-lr-sm">
 
-    <form id="add-candidate-form" class="grid w-100-pc w-max-425-px pad-md">
+    <form id="add-candidate-form" class="form-default">
 
-        <h1 class="f-prmy mar-b-sm">Add a Candidate</h1>
+        <h1>Add a Candidate</h1>
 
-        <div class="error-wrapper mar-b-sm hide">
+        <div class="error-wrapper">
             <i class="fa-solid fa-circle-exclamation clr-red"></i>
             <p class="error-message mar-l-md">Error Message</p>
         </div>
 
-        <label class="f-scnd" for="first_name">First Name<span class="astrick clr-red hide">*</span></label>
-        <input class="form-control form-required mar-b-sm" type="text" name="first_name">
-
-        <label class='f-scnd' for="last_name">Last Name<span class="astrick clr-red hide">*</span></label>
-        <input class="form-control form-required mar-b-sm" type="text" name="last_name">
-
-        <label class="f-scnd" for="email">Email</label>
-        <input class="form-control mar-b-sm" type="text" name="email">
-
-        <label class="f-scnd" for="phone">Phone</label>
-        <input class="form-control mar-b-sm" type="tel" name="phone">
-
         <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
 
-        <button class="f-prmy" type="submit">Add</button>
+        <label for="first_name">First Name<span class="astrick clr-red hide">*</span></label>
+        <input class="form-control form-required" type="text" name="first_name">
+
+        <label for="last_name">Last Name<span class="astrick clr-red hide">*</span></label>
+        <input class="form-control form-required" type="text" name="last_name">
+
+        <label for="email">Email</label>
+        <input class="form-control" type="text" name="email">
+
+        <label for="phone">Phone</label>
+        <input class="form-control" type="tel" name="phone">
+
+
+        <div class="button-wrapper">
+            <button type="submit">
+                <p>Add</p>
+                <i class="fa-solid fa-people-group"></i>
+            </button>
+        </div>
 
     </form>
     

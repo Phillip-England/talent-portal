@@ -1,3 +1,7 @@
-.brd-rd-max{
+.b-rd-max{
     border-radius: 100%;
+}
+
+.b-rd-shrp{
+    border-radius: 10px;
 }

@@ -1,0 +1,87 @@
+.form-default{
+    display:grid;
+    width: 100%;
+    max-width: 425px;
+    box-shadow: 2px 2px 10px var(--darkgray);
+    border-radius: 10px;
+    padding:var(--em-md);
+}
+
+.form-default h1 {
+    font-family: var(--primary-font);
+    margin-bottom:var(--em-sm);
+    font-size:var(--rem-lg);
+    color:var(--main-clr);
+}
+
+.form-default .error-wrapper{
+    margin-bottom:var(--em-md);
+    padding: var(--em-sm);
+    display:none;
+    align-items: center;
+    justify-content: start;
+    font-family: var(--secondary-font);
+    font-size:var(--rem-sm);
+    background-color: var(--main-clr);
+    border-radius: 3px;
+    color:white;
+}
+
+.form-default .error-wrapper i{
+    color:white;
+}
+
+.form-default label{
+    font-family:var(--secondary-font);
+    font-size:var(--rem-xs);
+}
+
+.form-default input{
+    margin-bottom: var(--em-sm);
+    font-size:var(--rem-sm);
+    font-family:var(--secondary-font);
+    border:none;
+    border-bottom:solid black 1px;
+    color:var(--main-clr);
+}
+
+.form-default input:last-of-type{
+    margin-bottom: var(--em-md);
+}
+
+.form-default input:focus{
+    outline:none;
+    border-bottom: solid var(--main-clr) 1px;
+}
+
+.form-default input:hover{
+    outline:none;
+    border-bottom: solid var(--main-clr) 1px;
+}
+
+.form-default .button-wrapper{
+    display:flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.form-default .button-wrapper button{
+    font-family: var(primarty-font);
+    width:40%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--main-clr);
+    border-radius: 3px;
+    color:white;
+}
+
+.form-default .button-wrapper button i{
+    padding-left: var(--em-sm);
+}
+
+.form-default .button-wrapper button i, p{
+    font-size:var(--rem-sm);
+}
+

@@ -63,3 +63,35 @@
 .pad-l-xl{
     padding-left: var(--em-xl);
 }
+
+/*LEFT AND RIGHT*/
+
+.pad-lr-xs{
+    padding-left: var(--em-xs);
+    padding-right: var(--em-xs);
+}
+
+.pad-lr-sm{
+    padding-left: var(--em-sm);
+    padding-right: var(--em-sm);
+}
+
+.pad-lr-md{
+    padding-left: var(--em-md);
+    padding-right: var(--em-md);
+}
+
+.pad-lr-lg{
+    padding-left: var(--em-lg);
+    padding-right: var(--em-lg);
+}
+
+.pad-lr-xl{
+    padding-left: var(--em-xl);
+    padding-right: var(--em-xl);
+}
+
+.pad-lr-xxl{
+    padding-left: var(--em-xxl);
+    padding-right: var(--em-xxl);
+}

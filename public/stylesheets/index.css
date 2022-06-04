@@ -5,25 +5,48 @@ html, body{
     margin: 0;
 }
 
-h1, h2, h3, h4, p {
+h1, h2, h3, h4{
     margin: 0;
     padding: 0;
+    font-weight:400;
+}
+
+p{
+    margin:0;
+    padding:0;
+}
+
+button{
+    background-color: white;
+    border:solid black 1px;
 }
 
 :root{
     /*COLORS*/
     --main-clr:#E51636;
-    --gray:#f2f2f2;
-    --red:#E51636;
     --white:white;
+    --lightgray:#fafafa;
+    --gray:#f2f2f2;
+    --darkgray:#c3c3c3;
+    --red:#E51636;
+    --blue:#007dc1;
+    --orange:#D83A00;
     /*FONTS*/
     --primary-font: 'Noto Serif', serif;
     --secondary-font: 'Roboto', sans-serif;
     /*EM*/
+    --em-xxs:0.15em;
     --em-xs:0.25em;
     --em-sm:0.5em;
-    --em-md:0.75em;
-    --em-lg:1em;
-    --em-xl:1.25em;
+    --em-md:1em;
+    --em-lg:1.5em;
+    --em-xl:2em;
+    --em-xxl:4em;
+    /*REM*/
+    --rem-xs:0.75rem;
+    --rem-sm:1rem;
+    --rem-md:1.25rem;
+    --rem-lg:1.5rem;
+    --rem-xl:1.75rem;
 }
 

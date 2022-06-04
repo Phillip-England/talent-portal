@@ -7,8 +7,6 @@ const submitForm = async (form, url) => {
     const astricks = form.getElementsByClassName('astrick')
     const errorMessage = form.getElementsByClassName('error-message')[0]
     const errorWrapper = form.getElementsByClassName('error-wrapper')[0]
-    const errorShowClass = 'flex-r-lft'
-    const errorHideClass = 'hide'
     let quit = false
 
     //displaying our loader
@@ -19,8 +17,7 @@ const submitForm = async (form, url) => {
         //if we get an empty input, display the astrick, hide the load, make quit true
         if (requiredInputs[x].value == ''){
             astricks[x].style.display = 'inline'
-            errorWrapper.classList.add(errorShowClass)
-            errorWrapper.classList.remove(errorHideClass)
+            errorWrapper.style.display = 'flex'
             errorMessage.innerText = 'Please fill out all the required form fields'
             loader.style.display = ''
             quit = true
@@ -36,8 +33,7 @@ const submitForm = async (form, url) => {
 
     //if we made it this far, hide our error message
     errorMessage.innerText = ''
-    errorWrapper.classList.remove(errorShowClass)
-    errorWrapper.classList.add(errorHideClass)
+    errorWrapper.style.display = ''
 
     //getting our values
     let values = getFormValues(inputs)
@@ -60,8 +56,7 @@ const submitForm = async (form, url) => {
     if (data.error){
         //display the error
         errorMessage.innerText = data.error
-        errorWrapper.classList.add(errorShowClass)
-        errorWrapper.classList.remove(errorHideClass)
+        errorWrapper.style.display = 'flex'
         //hide the loader
         loader.style.display = ''
         //end the function
