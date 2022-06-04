@@ -1,0 +1,65 @@
+/*ALL SIDES*/
+
+.mar-xs{
+    margin: var(--em-xs);
+}
+
+.mar-sm{
+    margin: var(--em-sm);
+}
+
+.mar-md{
+    margin: var(--em-md);
+}
+
+.mar-lg{
+    margin: var(--em-lg);
+}
+
+.mar-sl{
+    margin: var(--em-xl);
+}
+
+/*BOTTOM*/
+
+.mar-b-xs{
+    margin-bottom: var(--em-xs);
+}
+
+.mar-b-sm{
+    margin-bottom: var(--em-sm);
+}
+
+.mar-b-md{
+    margin-bottom: var(--em-md);
+}
+
+.mar-b-lg{
+    margin-bottom: var(--em-lg);
+}
+
+.mar-b-xl{
+    margin-bottom: var(--em-xl);
+}
+
+/*LEFT*/
+
+.mar-l-xs{
+    margin-left: var(--em-xs);
+}
+
+.mar-l-sm{
+    margin-left: var(--em-sm);
+}
+
+.mar-l-md{
+    margin-left: var(--em-md);
+}
+
+.mar-l-lg{
+    margin-left: var(--em-lg);
+}
+
+.mar-l-xl{
+    margin-left: var(--em-xl);
+}

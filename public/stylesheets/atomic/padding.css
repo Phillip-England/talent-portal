@@ -1,0 +1,65 @@
+/*ALL SIDES*/
+
+.pad-xs{
+    padding: var(--em-xs);
+}
+
+.pad-sm{
+    padding: var(--em-sm);
+}
+
+.pad-md{
+    padding: var(--em-md);
+}
+
+.pad-lg{
+    padding: var(--em-lg);
+}
+
+.pad-sl{
+    padding: var(--em-xl);
+}
+
+/*BOTTOM*/
+
+.pad-b-xs{
+    padding-bottom: var(--em-xs);
+}
+
+.pad-b-sm{
+    padding-bottom: var(--em-sm);
+}
+
+.pad-b-md{
+    padding-bottom: var(--em-md);
+}
+
+.pad-b-lg{
+    padding-bottom: var(--em-lg);
+}
+
+.pad-b-xl{
+    padding-bottom: var(--em-xl);
+}
+
+/*LEFT*/
+
+.pad-l-xs{
+    padding-left: var(--em-xs);
+}
+
+.pad-l-sm{
+    padding-left: var(--em-sm);
+}
+
+.pad-l-md{
+    padding-left: var(--em-md);
+}
+
+.pad-l-lg{
+    padding-left: var(--em-lg);
+}
+
+.pad-l-xl{
+    padding-left: var(--em-xl);
+}

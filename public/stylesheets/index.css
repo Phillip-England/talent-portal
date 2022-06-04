@@ -1,11 +1,29 @@
 html, body{
     font-size: 16px;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, p {
+    margin: 0;
+    padding: 0;
 }
 
 :root{
+    /*COLORS*/
     --main-clr:#E51636;
     --gray:#f2f2f2;
     --red:#E51636;
     --white:white;
+    /*FONTS*/
+    --primary-font: 'Noto Serif', serif;
+    --secondary-font: 'Roboto', sans-serif;
+    /*EM*/
+    --em-xs:0.25em;
+    --em-sm:0.5em;
+    --em-md:0.75em;
+    --em-lg:1em;
+    --em-xl:1.25em;
 }
 

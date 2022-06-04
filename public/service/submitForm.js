@@ -5,7 +5,10 @@ const submitForm = async (form, url) => {
     const inputs = form.getElementsByClassName('form-control')
     const requiredInputs = form.getElementsByClassName('form-required')
     const astricks = form.getElementsByClassName('astrick')
-    const error = form.getElementsByClassName('error')[0]
+    const errorMessage = form.getElementsByClassName('error-message')[0]
+    const errorWrapper = form.getElementsByClassName('error-wrapper')[0]
+    const errorShowClass = 'flex-r-lft'
+    const errorHideClass = 'hide'
     let quit = false
 
     //displaying our loader
@@ -16,7 +19,9 @@ const submitForm = async (form, url) => {
         //if we get an empty input, display the astrick, hide the load, make quit true
         if (requiredInputs[x].value == ''){
             astricks[x].style.display = 'inline'
-            error.innerText = 'Please fill out all the required form fields'
+            errorWrapper.classList.add(errorShowClass)
+            errorWrapper.classList.remove(errorHideClass)
+            errorMessage.innerText = 'Please fill out all the required form fields'
             loader.style.display = ''
             quit = true
         } else {
@@ -30,23 +35,40 @@ const submitForm = async (form, url) => {
     }
 
     //if we made it this far, hide our error message
-    error.innerText = ''
-
+    errorMessage.innerText = ''
+    errorWrapper.classList.remove(errorShowClass)
+    errorWrapper.classList.add(errorHideClass)
 
     //getting our values
     let values = getFormValues(inputs)
 
     //making our fetch request
-    let data = await fetchSimple({
-        method: 'POST',
-        body: values
+    let res = await fetch(url, {
+        method: "POST",
+        body: values,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
     })
+
+    let data = await res.json()
 
     console.log(data)
 
-    //making a fetch request
-//     let data = await fetchSimple({
-//         method: 'POST',
+    //if we get an error
+    if (data.error){
+        //display the error
+        errorMessage.innerText = data.error
+        errorWrapper.classList.add(errorShowClass)
+        errorWrapper.classList.remove(errorHideClass)
+        //hide the loader
+        loader.style.display = ''
+        //end the function
+        return
+    }
 
-//     })
+    //if we make it past the error handling, reload the page
+    window.location.reload()
+
 }

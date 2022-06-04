@@ -5,3 +5,7 @@
 .w-100-px{
     width: 100px;
 }
+
+.w-max-425-px{
+    max-width: 425px;
+}

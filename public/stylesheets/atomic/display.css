@@ -2,8 +2,46 @@
     display:none;
 }
 
+.inline{
+    display: inline;
+}
+
+/*FLEXBOX*/
+
 .flex-r-cnt{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.flex-r-lft{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.r-lft{
+    align-items: center;
+    justify-content: start;
+}
+
+.flex-c-cnt{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-c-lft{
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+/*GRID*/
+
+.grid{
+    display:grid;
+}
+

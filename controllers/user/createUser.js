@@ -110,8 +110,6 @@ const createUser = async (req, res) => {
         })
         console.log(error)
     }
-    
-dds
 }
 
 module.exports = createUser

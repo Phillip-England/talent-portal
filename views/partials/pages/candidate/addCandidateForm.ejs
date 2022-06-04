@@ -1,26 +1,29 @@
-<section>
+<section class="flex-r-cnt">
 
-    <form id="add-candidate-form" method="POST" action="/candidates/add-candidate">
+    <form id="add-candidate-form" class="grid w-100-pc w-max-425-px pad-md">
 
-        <h1>Add a Candidate</h1>
+        <h1 class="f-prmy mar-b-sm">Add a Candidate</h1>
 
-        <p class="error">Error Message</p>
+        <div class="error-wrapper mar-b-sm hide">
+            <i class="fa-solid fa-circle-exclamation clr-red"></i>
+            <p class="error-message mar-l-md">Error Message</p>
+        </div>
 
-        <label for="first_name">First Name<span class="astrick clr-red hide">*</span></label>
-        <input type="text" name="first_name" class="form-control form-required">
+        <label class="f-scnd" for="first_name">First Name<span class="astrick clr-red hide">*</span></label>
+        <input class="form-control form-required mar-b-sm" type="text" name="first_name">
 
-        <label for="last_name">Last Name<span class="astrick clr-red hide">*</span></label>
-        <input type="text" name="last_name" class="form-control form-required">
+        <label class='f-scnd' for="last_name">Last Name<span class="astrick clr-red hide">*</span></label>
+        <input class="form-control form-required mar-b-sm" type="text" name="last_name">
 
-        <label for="email">Email</label>
-        <input type="text" name="email" class="form-control">
+        <label class="f-scnd" for="email">Email</label>
+        <input class="form-control mar-b-sm" type="text" name="email">
 
-        <label for="phone">Phone</label>
-        <input type="tel" name="phone" class="form-control">
+        <label class="f-scnd" for="phone">Phone</label>
+        <input class="form-control mar-b-sm" type="tel" name="phone">
 
-        <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+        <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
 
-        <button type="submit">Add</button>
+        <button class="f-prmy" type="submit">Add</button>
 
     </form>
     
