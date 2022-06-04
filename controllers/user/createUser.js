@@ -82,7 +82,7 @@ const createUser = async (req, res) => {
         password = validator.escape(password)
         //hashing our password
         const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(sanitizedPassword, salt)
+        const hashedPassword = await bcrypt.hash(password, salt)
         //creating a new user object
         newUser = await User.create({
             email: email,
@@ -111,7 +111,7 @@ const createUser = async (req, res) => {
         console.log(error)
     }
     
-
+dds
 }
 
 module.exports = createUser
