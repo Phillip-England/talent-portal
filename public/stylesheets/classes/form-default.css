@@ -1,3 +1,5 @@
+/*ACTUAL FORM ELEMENT*/
+
 .form-default{
     display:grid;
     width: 100%;
@@ -5,7 +7,10 @@
     box-shadow: 2px 2px 10px var(--darkgray);
     border-radius: 10px;
     padding:var(--em-md);
+    border-top:solid var(--darkgray) 2px;
 }
+
+/*FORM TITLE*/
 
 .form-default h1 {
     font-family: var(--primary-font);
@@ -13,6 +18,8 @@
     font-size:var(--rem-lg);
     color:var(--main-clr);
 }
+
+/*ERROR MESSAGE*/
 
 .form-default .error-wrapper{
     margin-bottom:var(--em-md);
@@ -31,33 +38,65 @@
     color:white;
 }
 
+/*LABELS*/
+
 .form-default label{
     font-family:var(--secondary-font);
-    font-size:var(--rem-xs);
+    font-size:var(--rem-sm);
 }
+
+/*INPUTS*/
 
 .form-default input{
-    margin-bottom: var(--em-sm);
-    font-size:var(--rem-sm);
+    font-size:var(--rem-md);
     font-family:var(--secondary-font);
     border:none;
-    border-bottom:solid black 1px;
+    background-color: var(--gray);
     color:var(--main-clr);
-}
-
-.form-default input:last-of-type{
-    margin-bottom: var(--em-md);
 }
 
 .form-default input:focus{
     outline:none;
-    border-bottom: solid var(--main-clr) 1px;
+    background-color: var(--gray);
+    background-color:#e3e3e3;
 }
 
 .form-default input:hover{
     outline:none;
-    border-bottom: solid var(--main-clr) 1px;
+    background-color:#e3e3e3;
 }
+
+/*ANIMATED UNDERLINE*/
+
+.form-default .underline{
+    height:1px;
+    width:100%;
+    background-color: var(--main-clr);
+    margin-bottom: var(--em-sm);
+    visibility: hidden;
+    animation-duration: 0.5s;
+}
+
+.form-default .last-underline{
+    margin-bottom: var(--em-md);
+}
+
+@keyframes snap-underline {
+    0% {
+        width:0%;
+        opacity: 0%;
+    }
+    50% {
+        width:100%;
+        opacity: 50%;
+    }
+    100% {
+        width:100%;
+        opacity: 100%;
+    }
+}
+
+/*SUBMIT BUTTON*/
 
 .form-default .button-wrapper{
     display:flex;
@@ -75,13 +114,28 @@
     background-color: var(--main-clr);
     border-radius: 3px;
     color:white;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animate-submit-button {
+    0% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 20%;
+    }
+}
+
+.form-default .button-wrapper button:hover{
+    box-shadow:1px 1px 10px var(--main-clr);
 }
 
 .form-default .button-wrapper button i{
     padding-left: var(--em-sm);
 }
 
-.form-default .button-wrapper button i, p{
-    font-size:var(--rem-sm);
+.form-default .button-wrapper button i, button p{
+    font-size:var(--rem-md);
 }
 

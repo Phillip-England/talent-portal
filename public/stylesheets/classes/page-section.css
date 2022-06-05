@@ -1,0 +1,8 @@
+.page-section{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: var(--em-sm);
+    margin-right: var(--em-sm);
+    margin-bottom: var(--em-sm);
+}

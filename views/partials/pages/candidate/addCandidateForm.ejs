@@ -1,4 +1,4 @@
-<section class="flex-r-cnt mar-lr-sm">
+<section class="page-section">
 
     <form id="add-candidate-form" class="form-default">
 
@@ -9,23 +9,26 @@
             <p class="error-message mar-l-md">Error Message</p>
         </div>
 
-        <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
-
         <label for="first_name">First Name<span class="astrick clr-red hide">*</span></label>
         <input class="form-control form-required" type="text" name="first_name">
+        <div class="underline"></div>
 
         <label for="last_name">Last Name<span class="astrick clr-red hide">*</span></label>
         <input class="form-control form-required" type="text" name="last_name">
+        <div class="underline"></div>
 
         <label for="email">Email</label>
         <input class="form-control" type="text" name="email">
+        <div class="underline"></div>
 
         <label for="phone">Phone</label>
         <input class="form-control" type="tel" name="phone">
+        <div class="underline last-underline"></div>
 
+        <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
 
         <div class="button-wrapper">
-            <button type="submit">
+            <button class="submit-button" type="submit">
                 <p>Add</p>
                 <i class="fa-solid fa-people-group"></i>
             </button>

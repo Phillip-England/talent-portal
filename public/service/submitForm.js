@@ -7,6 +7,7 @@ const submitForm = async (form, url) => {
     const astricks = form.getElementsByClassName('astrick')
     const errorMessage = form.getElementsByClassName('error-message')[0]
     const errorWrapper = form.getElementsByClassName('error-wrapper')[0]
+    const submitButton = form.getElementsByClassName('submit-button')[0]
     let quit = false
 
     //displaying our loader
@@ -35,6 +36,9 @@ const submitForm = async (form, url) => {
     errorMessage.innerText = ''
     errorWrapper.style.display = ''
 
+    //adding animation to our submit button
+    submitButton.style.animationName = 'animate-submit-button'
+
     //getting our values
     let values = getFormValues(inputs)
 
@@ -48,9 +52,13 @@ const submitForm = async (form, url) => {
         }
     })
 
-    let data = await res.json()
+    // if our credentials expire, we will need to redirect to the login page
+    if (res.redirected == true){
+        window.location = '/user/login'
+        return
+    }
 
-    console.log(data)
+    let data = await res.json()
 
     //if we get an error
     if (data.error){
@@ -59,11 +67,13 @@ const submitForm = async (form, url) => {
         errorWrapper.style.display = 'flex'
         //hide the loader
         loader.style.display = ''
+        //return button back from animation
+        submitButton.style.animationName = ''
         //end the function
         return
     }
 
-    //if we make it past the error handling, reload the page
+    // if we make it past the error handling, reload the page
     window.location.reload()
 
 }

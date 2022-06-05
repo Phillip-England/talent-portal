@@ -21,11 +21,17 @@ const authUser = async (req, res, next) => {
             cookies.refreshToken(res, token)
             //going to our next function attached to our route
             next()
-        } else {
-            //if our jwt token is not expired, simply get our user from the token and move forward
+        }
+        //if neither cookies are expired, then define the user and move forward
+        if (req.signedCookies.jwt_token != undefined && req.signedCookies.refresh_token != undefined){
             const decoded = jwt.verify(req.signedCookies.jwt_token, process.env.JWT_SECRET)
             req.user = await User.findById(decoded._id).select('-password')
             next()
+        }
+        //if both are expired, redirect home
+        if (req.signedCookies.jwt_token == undefined && req.signedCookies.refresh_token == undefined) {
+            console.log('both are expired')
+            res.redirect('/user/login')
         }
     } catch (error) {
         //if our jwt_token and our refresh_token have expired, go back to login page
