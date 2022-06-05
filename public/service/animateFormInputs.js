@@ -1,5 +1,4 @@
-const animateFormInputs = () => {
-    const form = document.getElementById('add-candidate-form')
+const animateFormInputs = (form) => {
     const inputs = form.getElementsByClassName('form-control')
     const underlines = form.getElementsByClassName('underline')
 
@@ -18,10 +17,5 @@ const animateFormInputs = () => {
             currentInput.style.borderBottom = ''
         })
     }
-
-
-    console.log(underlines)
-
 }
 
-animateFormInputs()

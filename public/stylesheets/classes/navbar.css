@@ -1,0 +1,113 @@
+/*ACTUAL NAVBAR*/
+
+.navbar{
+    display:flex;
+    height: 50px;
+    box-shadow: 1px 1px 5px var(--darkgray);
+    margin-bottom: var(--em-sm);
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+/*HAMBURGER ICON*/
+
+.navbar .icon-wrapper{
+    display:flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.navbar .icon-wrapper i{
+    padding-left: var(--em-sm);
+    font-size: var(--rem-lg);
+    color:var(--main-clr);
+}
+
+/*TITLE*/
+
+.navbar .nav-title{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: var(--primary-font);
+}
+
+.navbar .nav-title h1{
+    color:var(--main-clr);
+}
+
+/*MOBILE NAV LIST*/
+
+.navbar .mobile-nav-list .close-wrapper{
+    width:100%;
+    height:50px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    box-shadow: 0px 3px 5px white;
+}
+
+.navbar .mobile-nav-list .close-wrapper i{
+    color:var(--white);
+    font-size: var(--rem-lg);
+    padding-left: var(--em-sm);
+    font-size: var(--rem-lg);
+    display: none;
+}
+
+.navbar .mobile-nav-list{
+    position: absolute;
+    display: flex;
+    top:0;
+    left:0;
+    flex-direction: column;
+    align-items: center;
+    height:100vh;
+    width:0%;
+    background-color: var(--main-clr);
+    opacity: 0%;
+    margin: 0;
+    padding:0;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+}
+
+@keyframes show-mobile-nav {
+    from{
+        width:0%;
+        opacity: 0%;
+    }
+    to{
+        width:60%;
+        opacity: 95%;
+    }
+}
+
+@keyframes hide-mobile-nav {
+    from{
+        width:60%;
+        opacity:95%;
+    }
+    to{
+        width:0%;
+        opacity: 0%;
+    }
+}
+
+.navbar .mobile-nav-list .nav-item-wrapper {
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:50px;
+    box-shadow: 0px 3px 4px white;
+}
+
+.navbar .mobile-nav-list .nav-item-wrapper a{
+    color:var(--white);
+    font-family: var(--secondary-font);
+    text-decoration: none;
+    font-size:var(--rem-md);
+}
