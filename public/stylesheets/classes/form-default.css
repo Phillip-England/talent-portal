@@ -2,12 +2,13 @@
 
 .form-default{
     display:grid;
-    width: 85%;
-    /* max-width: 425px; */
-    box-shadow: 2px 2px 10px var(--darkgray);
+    /* margin-right: var(--em-sm); */
+    /* margin-left: var(--em-sm); */
     border-radius: 10px;
     padding:var(--em-md);
-    border-top:solid var(--darkgray) 2px;
+    background-color: var(--white);
+    width: -moz-available; 
+    width: -webkit-fill-available;
 }
 
 /*FORM TITLE*/

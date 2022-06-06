@@ -5,3 +5,8 @@
     flex-direction: column;
     margin-bottom: var(--em-sm);
 }
+
+.side-buffer {
+    margin-right: var(--em-sm);
+    margin-left: var(--em-sm);
+}
