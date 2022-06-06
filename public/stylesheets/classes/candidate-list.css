@@ -1,0 +1,39 @@
+.candidate-list{
+    display:flex;
+    box-shadow: 1px 1px 5px var(--darkgray);
+    margin-bottom: var(--em-sm);
+    width: 95%;
+    height:50px;
+}
+
+.candidate-list .candidate-name-wrapper{
+    display:flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: var(--em-sm);
+    width: 100%;
+}
+
+.candidate-list .candidate-name-wrapper h3{
+    font-family: var(--primary-font);
+    color: var(--main-clr);
+    font-size: var(--rem-md);
+}
+
+.candidate-list .candidate-icon-wrapper{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:50px;
+    color: var(--red);
+}
+
+.candidate-list .candidate-close-icon{
+    display:none;
+    color:var(--white);
+}
+
+.hidden-candidate-menu{
+    display:none;
+    margin-bottom: var(--em-sm);
+}

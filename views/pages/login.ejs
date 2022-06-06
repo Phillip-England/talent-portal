@@ -9,18 +9,18 @@
 </head>
 <body>
 
-    <main>
-        
-        <% if (activationMessage == true) { %>
-            <%- include('../partials/pages/login/activationMessage.ejs') %> 
-        <% } %>
+    <%- include('../partials/general/loading.ejs') %> 
 
-        <%- include('../partials/pages/login/loginForm.ejs') %> 
-        
-        <%- include('../partials/pages/login/registerForm.ejs') %> 
-        
-    </main>
+    <% if (activationMessage == true) { %>
+        <%- include('../partials/pages/login/activationMessage.ejs') %> 
+    <% } %>
+
+    <%- include('../partials/pages/login/loginForm.ejs') %> 
     
-    <%- include('../partials/general/scripts.ejs') %> 
+    <%- include('../partials/pages/login/registerForm.ejs') %> 
+        
+    <!-- SERVICE FUNCTIONS -->
+    <%- include('../partials/general/scripts.ejs') %>
+
 </body>
 </html>

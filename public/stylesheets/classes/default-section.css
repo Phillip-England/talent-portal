@@ -1,8 +1,7 @@
-.page-section{
+.default-section{
     display:flex;
     align-items: center;
     justify-content: center;
-    margin-left: var(--em-sm);
-    margin-right: var(--em-sm);
+    flex-direction: column;
     margin-bottom: var(--em-sm);
 }

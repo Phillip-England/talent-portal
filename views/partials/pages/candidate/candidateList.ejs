@@ -1,32 +1,23 @@
-<section>
+<section class="default-section">
 
     <% candidates.forEach(candidate => { %>
         
-        <form>
+        <div class="candidate-list">
 
-            <h3><%= candidate.firstName %> <%= candidate.lastName %></h3>
+            <div class="candidate-name-wrapper">
+                <h3 class="candidate-name"><%= candidate.firstName %> <%= candidate.lastName %></h3>
+            </div>
 
-            <% if (candidate.email == '') { %>
-                <p>No email provided</p>
-            <% } else { %> 
-                <p><%= candidate.email %></p>
-            <% } %>
+            <div class="candidate-icon-wrapper">
+                <i class="fa-solid fa-angle-left candidate-open-icon"></i>
+                <i class="fa-solid fa-angle-down candidate-close-icon"></i>
+            </div>
 
-            <label for="email" class="hide">Email</label>
-            <input type="text" class="hide" value=<%= candidate.email %>>
+        </div>
 
-            <% if (candidate.phone == '') { %>
-                <p>No phone number provided</p>
-            <% } else { %> 
-                <p><%= candidate.phone %></p>
-            <% } %>
-
-            <label for="email" class="hide">Phone</label>
-            <input type="text" class="hide" value=<%= candidate.email %>>
-
-            <button type="submit">Update</button>
-
-        </form>
+        <div class="hidden-candidate-menu">
+            hello
+        </div>
 
     <% }) %>
 

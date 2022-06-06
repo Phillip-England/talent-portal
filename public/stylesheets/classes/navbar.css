@@ -46,7 +46,6 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    box-shadow: 0px 3px 5px white;
 }
 
 .navbar .mobile-nav-list .close-wrapper i{
@@ -96,18 +95,17 @@
     }
 }
 
-.navbar .mobile-nav-list .nav-item-wrapper {
+.navbar .mobile-nav-list a {
     width:100%;
     display: flex;
     align-items: center;
     justify-content: center;
     height:50px;
-    box-shadow: 0px 3px 4px white;
+    text-decoration: none;
 }
 
-.navbar .mobile-nav-list .nav-item-wrapper a{
+.navbar .mobile-nav-list a p{
     color:var(--white);
     font-family: var(--secondary-font);
-    text-decoration: none;
     font-size:var(--rem-md);
 }

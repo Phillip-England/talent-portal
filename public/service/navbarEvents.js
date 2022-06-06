@@ -26,8 +26,10 @@ const navbarEvents = (navbar) => {
 
     //if we click anywhere on the document, close the mobile navigation
     document.addEventListener('click', () => {
-        mobileNavList.style.animationName = 'hide-mobile-nav'
-        closeMobileIcon.style.display = 'none'
+        //only run this animation if the nav is open
+        if (mobileNavList.style.animationName == 'show-mobile-nav'){
+            mobileNavList.style.animationName = 'hide-mobile-nav'
+            closeMobileIcon.style.display = 'none'
+        }
     })
-
 }

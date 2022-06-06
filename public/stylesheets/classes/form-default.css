@@ -2,8 +2,8 @@
 
 .form-default{
     display:grid;
-    width: 100%;
-    max-width: 425px;
+    width: 85%;
+    /* max-width: 425px; */
     box-shadow: 2px 2px 10px var(--darkgray);
     border-radius: 10px;
     padding:var(--em-md);
@@ -127,9 +127,9 @@
     }
 }
 
-.form-default .button-wrapper button:hover{
+/* .form-default .button-wrapper button:hover{
     box-shadow:1px 1px 10px var(--main-clr);
-}
+} */
 
 .form-default .button-wrapper button i{
     padding-left: var(--em-sm);

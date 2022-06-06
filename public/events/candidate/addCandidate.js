@@ -4,7 +4,4 @@ const addCandidate = () => {
         event.preventDefault()
         submitForm(this, '/candidates/add-candidate')
     })
-
 }
-
-addCandidate()
