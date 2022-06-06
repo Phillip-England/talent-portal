@@ -1,4 +1,5 @@
-const navbarEvents = (navbar) => {
+const initNavbar = () => {
+    let navbar = document.getElementsByClassName('navbar')[0]
     let mobileNavList = navbar.getElementsByClassName('mobile-nav-list')[0]
     let closeMobileIcon = navbar.getElementsByClassName('mobile-close-icon')[0]
     let hamburgerIcon = navbar.getElementsByClassName('hamburger-icon')[0]

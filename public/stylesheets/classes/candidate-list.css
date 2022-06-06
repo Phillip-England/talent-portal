@@ -1,4 +1,4 @@
-.candidate-list{
+.candidate-toggle-menu{
     display:flex;
     box-shadow: 1px 1px 5px var(--darkgray);
     margin-bottom: var(--em-sm);
@@ -6,7 +6,7 @@
     height:50px;
 }
 
-.candidate-list .candidate-name-wrapper{
+.candidate-toggle-menu .candidate-name-wrapper{
     display:flex;
     align-items: center;
     justify-content: start;
@@ -14,13 +14,13 @@
     width: 100%;
 }
 
-.candidate-list .candidate-name-wrapper h3{
+.candidate-toggle-menu .candidate-name-wrapper h3{
     font-family: var(--primary-font);
     color: var(--main-clr);
     font-size: var(--rem-md);
 }
 
-.candidate-list .candidate-icon-wrapper{
+.candidate-toggle-menu .candidate-icon-wrapper{
     display:flex;
     align-items: center;
     justify-content: center;
@@ -28,7 +28,7 @@
     color: var(--red);
 }
 
-.candidate-list .candidate-close-icon{
+.candidate-toggle-menu .candidate-close-icon{
     display:none;
     color:var(--white);
 }

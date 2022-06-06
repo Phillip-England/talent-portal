@@ -36,6 +36,7 @@
 
 .navbar .nav-title h1{
     color:var(--main-clr);
+    font-size:var(--rem-md);
 }
 
 /*MOBILE NAV LIST*/
