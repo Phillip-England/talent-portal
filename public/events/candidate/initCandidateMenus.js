@@ -1,40 +1,21 @@
 const initCandidateMenus = () => {
+
+    //collecting our variables
     let candidateToggleMenus = document.getElementsByClassName('candidate-toggle-menu')
     let candidateToggleWrappers = document.getElementsByClassName('candidate-toggle-menu-wrapper')
-    let hiddenMenus = document.getElementsByClassName('hidden-candidate-menu')
+
+    //this will house all of our HTML menu elements
     let toggleMenus = []
-    //collecting toggle menu objects
+
+    //converting each toggleMenu into a custom object
     for (x = 0; x < candidateToggleMenus.length; x++){
-        let toggleMenu = new ToggleMenu(
-            candidateToggleWrappers[x],
-            candidateToggleMenus[x],
-            candidateToggleMenus[x].getElementsByClassName('candidate-open-icon')[0],
-            candidateToggleMenus[x].getElementsByClassName('candidate-close-icon')[0],
-            candidateToggleMenus[x].getElementsByClassName('candidate-name')[0],
-            hiddenMenus[x],
-        )
-        toggleMenus.push(toggleMenu)
-    }
-    //looping through toggle menu objects
-    for (x = 0; x < toggleMenus.length; x++){
-        let currentMenu = toggleMenus[x]
-        currentMenu.openIcon.addEventListener('click', () => {
-            //closing all other toggle menus
-            for (y = 0; y < toggleMenus.length; y++){
-                toggleMenus[y].closeHiddenMenu()
-            }
-            //opening current menu
-            currentMenu.openHiddenMenu({
-                menuBackGroundColor: 'var(--main-clr)',
-                titleColor: 'var(--white)',
-                menuAnimation: 'fade-title-color',
-                hiddenMenuDisplay: 'flex',
-                hiddenMenuAnimation: 'open-hidden-menu'
-            })
+        let obj = new CandidateToggleMenu(candidateToggleMenus[x], {
+            wrapper: candidateToggleWrappers[x],
+            openButton: candidateToggleMenus[x].getElementsByClassName('candidate-open-icon')[0],
+            closeButton: candidateToggleMenus[x].getElementsByClassName('candidate-close-icon')[0],
+            hiddenMenu: candidateToggleWrappers[x].getElementsByClassName('hidden-candidate-menu')[0],
+            title: candidateToggleMenus[x].getElementsByClassName('candidate-name')[0],
         })
-        currentMenu.closeIcon.addEventListener('click', () => {
-                //closing current menu
-                currentMenu.closeHiddenMenu()
-        })
+        toggleMenus.push(obj)
     }
 }

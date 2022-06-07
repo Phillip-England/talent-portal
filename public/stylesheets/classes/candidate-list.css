@@ -19,31 +19,13 @@
     grid-area: title;
     display: flex;
     background-color: var(--white);
-    animation-duration: 0.25s;
     color:var(--main-clr);
-    animation-direction: normal;
 }
 
-@keyframes fade-title-color {
-    from{
-        background-color: var(--white);
-        color: var(--main-clr);
-    }
-    to{
-        background-color: var(--main-clr);
-        color:var(--white);
-    }
-}
-
-@keyframes reverse-title-color {
-    from{
-        background-color: var(--main-clr);
-        color: var(--white);
-    }
-    to{
-        background-color: var(--white);
-        color:var(--main-clr);
-    }
+.candidate-toggle-menu-active{
+    background-color: var(--main-clr);
+    animation-duration: 0.25s;
+    color:var(--white);
 }
 
 /*CANDIDATE NAME*/
@@ -68,8 +50,15 @@
     display:flex;
     align-items: center;
     justify-content: end;
-    color: var(--red);
     padding-right: var(--em-md);
+}
+
+.candidate-toggle-menu .candidate-open-icon{
+    color: var(--red);
+}
+
+.candidate-toggle-menu .candidate-open-icon-dormant{
+    display:none;
 }
 
 .candidate-toggle-menu .candidate-close-icon{
@@ -77,29 +66,26 @@
     color:var(--white);
 }
 
+.candidate-toggle-menu .candidate-close-icon-active{
+    display:block;
+}
+
 /*HIDDEN MENU*/
 
-.hidden-candidate-menu{
+.candidate-toggle-menu-wrapper .hidden-candidate-menu{
     display:none;
     grid-area: hidden-menu;
     width: 100%;
     background-color: var(--white);
-    animation-duration: 0.25s;
-    opacity: 0%;
-    animation-fill-mode: forwards;
     flex-direction: column;
 }
 
-@keyframes open-hidden-menu {
-    from {
-        opacity: 0%;
-    }
-    to {
-        opacity: 100%;
-    }
+.candidate-toggle-menu-wrapper .hidden-candidate-menu-active{
+    display:flex;
+    flex-direction: column;
 }
 
-.hidden-candidate-menu p {
+.candidate-toggle-menu-wrapper .hidden-candidate-menu p {
     font-family:var(--secondary-font);
     padding: var(--em-sm);
     font-size:var(--rem-sm);
@@ -107,20 +93,20 @@
 
 }
 
-.hidden-candidate-menu .candidate-options{
+.candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-options{
     display:flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.hidden-candidate-menu .candidate-options .hidden-menu-icon-wrapper{
+.candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-options .hidden-menu-icon-wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
     margin: var(--em-sm);
 }
 
-.hidden-candidate-menu .candidate-options .hidden-menu-icon-wrapper i{
+.candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-options .hidden-menu-icon-wrapper i{
     color:var(--main-clr);
     font-size:var(--rem-md);
 }

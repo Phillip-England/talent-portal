@@ -8,6 +8,10 @@
 
 /*FLEXBOX*/
 
+.flex{
+    display: flex;
+}
+
 .flex-r-cnt{
     display: flex;
     align-items: center;
