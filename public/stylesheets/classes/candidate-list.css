@@ -21,7 +21,6 @@
     background-color: var(--white);
     animation-duration: 0.25s;
     color:var(--main-clr);
-    animation-fill-mode: forwards;
     animation-direction: normal;
 }
 

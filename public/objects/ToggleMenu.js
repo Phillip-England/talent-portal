@@ -44,7 +44,6 @@ class ToggleMenu {
             config = {}
         }
         if (config.menuAnimation !== undefined && this.toggled == true){
-            console.log(config.menuAnimation)
             this.menu.style.animationName = config.menuAnimation
         }
         this.menu.style.backgroundColor = ''
@@ -52,7 +51,6 @@ class ToggleMenu {
         this.closeIcon.style.display = ''
         this.title.style.color = ''
         this.hiddenMenu.style.display = ''
-
         this.toggled = false
     }
 }

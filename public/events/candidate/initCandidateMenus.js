@@ -21,14 +21,12 @@ const initCandidateMenus = () => {
         currentMenu.openIcon.addEventListener('click', () => {
             //closing all other toggle menus
             for (y = 0; y < toggleMenus.length; y++){
-                toggleMenus[y].closeHiddenMenu({
-                    menuAnimation: 'reverse-title-color'
-                })
+                toggleMenus[y].closeHiddenMenu()
             }
             //opening current menu
             currentMenu.openHiddenMenu({
                 menuBackGroundColor: 'var(--main-clr)',
-                // titleColor: 'var(--white)',
+                titleColor: 'var(--white)',
                 menuAnimation: 'fade-title-color',
                 hiddenMenuDisplay: 'flex',
                 hiddenMenuAnimation: 'open-hidden-menu'
@@ -36,9 +34,7 @@ const initCandidateMenus = () => {
         })
         currentMenu.closeIcon.addEventListener('click', () => {
                 //closing current menu
-                currentMenu.closeHiddenMenu({
-                    menuAnimation: 'reverse-title-color',
-                })
+                currentMenu.closeHiddenMenu()
         })
     }
 }
