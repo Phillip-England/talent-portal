@@ -19,6 +19,7 @@
     grid-area: title;
     display: flex;
     background-color: var(--white);
+    animation-duration: 0.25s;
     color:var(--main-clr);
 }
 
@@ -99,6 +100,8 @@
     justify-content: space-evenly;
 }
 
+/*HIDDEN MENU ACTION ICONS*/
+
 .candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-options .hidden-menu-icon-wrapper{
     display: flex;
     align-items: center;
@@ -109,4 +112,11 @@
 .candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-options .hidden-menu-icon-wrapper i{
     color:var(--main-clr);
     font-size:var(--rem-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    z-index: 2;
 }

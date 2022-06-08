@@ -1,27 +1,33 @@
 class CandidateToggleMenu extends ToggleMenu {
-    constructor(menu, {wrapper, openButton, closeButton, hiddenMenu, title} = {}){
+    constructor(menu){
         super(menu)
-        this.wrapper = wrapper
+    }
+    setElements({openButton, closeButton, hiddenMenu} = {}){
         this.openButton = openButton
         this.closeButton = closeButton
         this.hiddenMenu = hiddenMenu
-        this.title = title
-        this.toggled = false
-        //adding events
+    }
+    setClasses({menuClass, openButtonClass, closeButtonClass, hiddenMenuClass} = {}){
+        this.menuClass = menuClass
+        this.openButtonClass = openButtonClass
+        this.closeButtonClass = closeButtonClass
+        this.hiddenMenuClass = hiddenMenuClass
+    }
+    addClasses(){
+        this.menu.classList.add(this.menuClass)
+        this.openButton.classList.add(this.openButtonClass)
+        this.closeButton.classList.add(this.closeButtonClass)
+        this.hiddenMenu.classList.add(this.hiddenMenuClass)
+    }
+    initEvents(){
         this.openEvent()
         this.closeEvent()
     }
-    addClasses(){
-        this.menu.classList.add('candidate-toggle-menu-active')
-        this.openButton.classList.add('candidate-open-icon-dormant')
-        this.closeButton.classList.add('candidate-close-icon-active')
-        this.hiddenMenu.classList.add('hidden-candidate-menu-active')
-    }
     removeClasses(){
-        this.menu.classList.remove('candidate-toggle-menu-active')
-        this.openButton.classList.remove('candidate-open-icon-dormant')
-        this.closeButton.classList.remove('candidate-close-icon-active')
-        this.hiddenMenu.classList.remove('hidden-candidate-menu-active')
+        this.menu.classList.remove(this.menuClass)
+        this.openButton.classList.remove(this.openButtonClass)
+        this.closeButton.classList.remove(this.closeButtonClass)
+        this.hiddenMenu.classList.remove(this.hiddenMenuClass)
     }
     openEvent(){
         this.openButton.addEventListener('click', (event) => {
