@@ -1,0 +1,32 @@
+.icon-click-animation::after{
+    content: '';
+    border-radius: 100%;
+    z-index: -1;
+    top:50%;
+    left:50%;
+    height: 200%;
+    width: 200%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: var(--main-clr);
+    animation-name: icon-click-animation;
+    animation-duration: 0.5s;
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes icon-click-animation {
+    0%{
+        height: 0%;
+        width: 0%;
+        opacity: 100%;
+    }
+    75%{
+        height:200%;
+        width:200%;
+        opacity: 5%;
+    }
+    100%{
+        opacity: 0%;
+    }
+}

@@ -4,7 +4,7 @@
     width: 100%;
     margin-bottom: var(--em-sm);
     display: grid;
-    grid-template-rows: 50px auto;
+    grid-template-rows: 40px auto;
     grid-template-columns: 1fr;
     grid-template-areas: 
         'title'
@@ -21,6 +21,9 @@
     background-color: var(--white);
     animation-duration: 0.25s;
     color:var(--main-clr);
+    border-radius: px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .candidate-toggle-menu-active{
@@ -91,13 +94,74 @@
     padding: var(--em-sm);
     font-size:var(--rem-sm);
     border-bottom: solid var(--gray) 1px;
-
 }
+
+.candidate-toggle-menu-wrapper .candidate-details-dormant{
+    display: none;
+}
+
+
 
 .candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-options{
     display:flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-options-dormant{
+    display: none;
+}
+
+/*HIDDEN MENU EDIT FORM*/
+
+.candidate-toggle-menu-wrapper .candidate-edit-form{
+    display: none;
+}
+
+.candidate-toggle-menu-wrapper .candidate-edit-form-active{
+    display: flex;
+    flex-direction: column;
+}
+
+.candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-edit-form input {
+    font-family:var(--secondary-font);
+    margin: var(--em-sm);
+    font-size:var(--rem-sm);
+    width: 100%;
+    background-color: var(--gray);
+    outline:none;
+    border: none;
+    color:var(--main-clr);
+}
+
+.candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-edit-form .input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-edit-form .update-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: var(--em-sm);
+    padding-bottom: var(--em-md);
+}
+
+.candidate-toggle-menu .candidate-update-button{
+    position: relative;
+}
+
+.candidate-toggle-menu-wrapper .hidden-candidate-menu .candidate-edit-form .update-button-wrapper button {
+    background-color: var(--main-clr);
+    color:white;
+    border: none;
+    padding: var(--em-xxs);
+    border-radius: 3px;
+    font-size:var(--rem-sm);
+    width: 33%;
 }
 
 /*HIDDEN MENU ACTION ICONS*/

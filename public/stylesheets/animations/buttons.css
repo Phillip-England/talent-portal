@@ -1,0 +1,18 @@
+.button-default-animation::after{
+    animation-name: button-default-animation;
+    animation-duration: 0.5s;
+    height:100%;
+    width:100%;
+    background-color: black;
+}
+
+@keyframes button-default-animation {
+    from{
+        opacity: 100%;
+        border-radius: 0%;
+    }
+    to{
+        opacity: 0%;
+        border-radius: 100%;
+    }
+}

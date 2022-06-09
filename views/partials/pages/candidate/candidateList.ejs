@@ -1,8 +1,8 @@
-<section id="current-candidate-listing" class="default-section">
+<section id="current-candidate-listing" class="default-section side-buffer">
 
     <% candidates.forEach(candidate => { %>
         
-        <div class="candidate-toggle-menu-wrapper">
+        <form class="candidate-toggle-menu-wrapper">
 
             <div class="candidate-toggle-menu">
 
@@ -18,20 +18,43 @@
             </div>
     
             <div class="hidden-candidate-menu">
-                <% if (candidate.phone) { %>
-                    <p class="candidate-phone"><%= candidate.phone %></p>
-                <% } else { %>
-                    <p class="candidate-phone">No phone provided</p>
-                <% } %>
-                <% if (candidate.email) { %>
-                    <p class="candidate-email"><%= candidate.email %></p>
-                <% } else { %>
-                    <p class="candidate-email">No email provided</p>
-                <% } %>
+
+                <div class="candidate-details">
+                    <% if (candidate.phone) { %>
+                        <p class="candidate-phone"><%= candidate.phone %></p>
+                    <% } else { %>
+                        <p class="candidate-phone">No phone provided</p>
+                    <% } %>
+                    <% if (candidate.email) { %>
+                        <p class="candidate-email"><%= candidate.email %></p>
+                    <% } else { %>
+                        <p class="candidate-email">No email provided</p>
+                    <% } %>
+                </div>
+
+                <div class="candidate-edit-form">
+                    <div class='input-wrapper'>
+                        <input type="text" placeholder="First Name" value="<%=candidate.firstName%>">
+                    </div>
+                    <div class='input-wrapper'>
+                        <input type="text" placeholder="Last Name" value="<%=candidate.lastName%>">
+                    </div>
+                    <div class='input-wrapper'>
+                        <input type="text" placeholder="Phone" value="<%=candidate.phone%>">
+                    </div>
+                    <div class='input-wrapper last-input-wrapper'>
+                        <input type="text" placeholder="Email" value="<%=candidate.email%>">
+                    </div>
+                    <div class="update-button-wrapper">
+                        <button class='candidate-update-button' type="button">Update</button>
+                        <button class="cancel-edit-form-button" type="button">Cancel</button>
+                    </div>
+                </div>
+
 
                 <div class="candidate-options">
                     <div class="hidden-menu-icon-wrapper">
-                        <i class="fa-solid fa-pen candidate-edit-icon"></i>
+                        <i class="fa-solid fa-pen candidate-edit-icon" candidateID="<%=candidate._id%>"></i>
                     </div>
                     <div class="hidden-menu-icon-wrapper">
                         <i class="fa-solid fa-clipboard-list candidate-interview-icon"></i>
@@ -41,11 +64,13 @@
                     </div>
                 </div>
 
+
+
             </div>
 
 
 
-        </div>
+        </form>
 
 
     <% }) %>
