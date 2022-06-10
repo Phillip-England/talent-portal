@@ -1,3 +1,5 @@
+import ToggleMenu from '../objects/ToggleMenu.js'
+
 class CandidateToggleMenu extends ToggleMenu {
     constructor(menu){
         super(menu)
@@ -40,3 +42,5 @@ class CandidateToggleMenu extends ToggleMenu {
         })
     }
 }
+
+export default CandidateToggleMenu

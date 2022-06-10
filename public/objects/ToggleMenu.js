@@ -3,3 +3,5 @@ class ToggleMenu {
         this.menu = menu
     }
 }
+
+export default ToggleMenu

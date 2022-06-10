@@ -20,3 +20,5 @@ class Form {
         console.log(this.isFormComplete())
     }
 }
+
+export default Form

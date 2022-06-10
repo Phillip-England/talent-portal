@@ -1,3 +1,5 @@
+import CandidateToggleMenu from '../../objects/CandidateToggleMenu.js'
+
 const initCandidateMenus = () => {
 
     //collecting our variables
@@ -30,3 +32,5 @@ const initCandidateMenus = () => {
         toggleMenus.push(obj)
     }
 }
+
+export default initCandidateMenus

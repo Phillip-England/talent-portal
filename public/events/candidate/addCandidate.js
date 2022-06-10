@@ -5,3 +5,5 @@ const addCandidate = () => {
         submitForm(this, '/candidates/add-candidate')
     })
 }
+
+export default addCandidate

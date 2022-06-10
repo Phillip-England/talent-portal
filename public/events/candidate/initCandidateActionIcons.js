@@ -1,3 +1,5 @@
+import Icon from '../../objects/Icon.js'
+
 const initCandidateActionIcons = () => {
 
     //collecting icons
@@ -45,3 +47,5 @@ const initCandidateActionIcons = () => {
     }
 
 }
+
+export default initCandidateActionIcons

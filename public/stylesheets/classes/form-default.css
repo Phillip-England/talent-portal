@@ -49,7 +49,7 @@
 /*INPUTS*/
 
 .form-default input{
-    font-size:var(--rem-md);
+    font-size:var(--rem-sm);
     font-family:var(--secondary-font);
     border:none;
     background-color: var(--gray);

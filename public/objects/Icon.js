@@ -1,3 +1,5 @@
+import Animator from "./Animator.js"
+
 class Icon {
     constructor(parent, icon){
         this.parent = parent
@@ -26,3 +28,5 @@ class Icon {
         })
     }
 }
+
+export default Icon

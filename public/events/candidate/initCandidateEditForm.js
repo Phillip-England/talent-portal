@@ -1,4 +1,6 @@
-const initCandidateEditForm = () => {
+import Form from '../../objects/Form.js'
+
+function initCandidateEditForm(){
     let candidateListingSection = document.getElementById('current-candidate-listing')
     let candidateEditForms = candidateListingSection.getElementsByClassName('candidate-edit-form')
     for (x = 0; x < candidateEditForms.length; x++){
@@ -11,3 +13,5 @@ const initCandidateEditForm = () => {
         form.submit()
     }
 }
+
+export default initCandidateEditForm
