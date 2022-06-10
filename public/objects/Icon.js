@@ -1,19 +1,28 @@
 class Icon {
-    constructor({parent, icon, animation} = {}){
+    constructor(parent, icon){
         this.parent = parent
         this.icon = icon
-        this.animation = animation
     }
-    initIconEvents(){
-        this.addClickAnimation()
+    animate(animationClass, eventType, animationLength){
+        let obj = new Animator(this.icon, animationClass, animationLength)
+        obj.animate(eventType)
     }
-    addClickAnimation(){
-        this.icon.addEventListener('click', () => {
-            this.icon.classList.add(this.animation)
-            setTimeout(() => {
-                this.icon.classList.remove(this.animation)
-            }, 500)
+    setEventElements(objectOfElements){
+        this.eventElements = objectOfElements
+    }
+    setToggleElements(objectOfElements){
+        this.toggleElements = objectOfElements
+    }
+    setToggleClasses(objectOfClasses){
+        this.toggleClasses = objectOfClasses
+    }
+    toggle(){
+        Object.values(this.eventElements).forEach(element => {
+            element.addEventListener('click', () => {
+                Object.keys(this.toggleElements).forEach(key => {
+                    this.toggleElements[key].classList.toggle(this.toggleClasses[key])
+                })
+            })
         })
     }
-    
 }

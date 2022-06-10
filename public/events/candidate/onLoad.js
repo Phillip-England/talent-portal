@@ -3,4 +3,5 @@ window.addEventListener('load', () => {
     addCandidate()
     initCandidateMenus()
     initCandidateActionIcons()
+    initCandidateEditForm()
 })
