@@ -91,7 +91,7 @@ class Form {
                 event.preventDefault()
                 console.log(this.url)
                 //displaying our loader
-                // this.revealLoader()
+                this.revealLoader()
                 //checking if the form is complete
                 if (this.isFormComplete() == false){
                     this.toggleAstricks()
@@ -102,15 +102,15 @@ class Form {
                 let formValues = this.getFormData()
                 //making our fetch request
                 let data = await this.formFetch(formValues)
-                console.log(data)
-                //if we make it to the end, hide all astricks and the error message
-                // this.removeLoader()
-                this.toggleAstricks()
-                this.hideErrorMessage()
+                if (data.error){
+                    throw(data.error)
+                }
+                location.reload()
             } catch (err) {
+                this.removeLoader()
+                this.toggleAstricks()
                 this.revealErrorMessage(err)
             }
-
         })
     }
 }
