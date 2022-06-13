@@ -9,12 +9,11 @@ const getCandidatePage = require('../controllers/candidate/getCandidatePage')
 const createCandidate = require('../controllers/candidate/createCandidate')
 const updateCandidate = require('../controllers/candidate/updateCandidate')
 
-
 //GET
 router.get('/', authUser, csrfProtection, getCandidatePage)
 
 //POST
-router.post('/add-candidate', authUser, csrfProtection, createCandidate)
+router.post('/create-candidate', authUser, csrfProtection, createCandidate)
 router.post('/update/:candidate', authUser, csrfProtection, updateCandidate)
 
 module.exports = router

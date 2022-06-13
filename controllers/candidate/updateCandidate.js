@@ -1,7 +1,7 @@
 const Validate = require('../../service/objects/Validate')
 const ValidateName = require('../../service/objects/ValidateName')
 const ValidatePhone = require('../../service/objects/ValidatePhone')
-const ValidateEmail = require('../../service/objects/ValidEmail')
+const ValidateEmail = require('../../service/objects/ValidateEmail')
 const Candidate = require('../../models/candidateModel')
 const chars = require('../../service/chars')
 

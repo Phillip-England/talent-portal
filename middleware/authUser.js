@@ -14,11 +14,11 @@ const authUser = async (req, res, next) => {
             //creating a new jwt token
             const token = jwt.sign({_id: req.user._id}, process.env.JWT_SECRET)
             //creating a new jwt_token cookie
-            cookies.jwtToken(res, token)
+            cookies.jwtToken(res, token, 30)
             //deleting our refresh cookie
             res.clearCookie('refresh_token')
             //creating a new refresh token
-            cookies.refreshToken(res, token)
+            cookies.refreshToken(res, token, 45)
             //going to our next function attached to our route
             next()
         }

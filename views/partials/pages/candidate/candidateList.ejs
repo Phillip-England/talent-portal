@@ -40,18 +40,22 @@
                     <div class='input-wrapper'>
                         <label for="first_name">First Name<span class="astrick">*</span></label>
                         <input class="form-control form-required" name="first_name" type="text" placeholder="First Name" value="<%=candidate.firstName%>">
+                        <span class="input-underline"></span>
                     </div>
                     <div class='input-wrapper'>
                         <label for="last_name">Last Name<span class="astrick">*</span></label>
                         <input class="form-control form-required" name="last_name" type="text" placeholder="Last Name" value="<%=candidate.lastName%>">
+                        <span class="input-underline"></span>
                     </div>
                     <div class='input-wrapper'>
                         <label for="phone">Phone</label>
                         <input class="form-control" type="text" name="phone" placeholder="Phone" value="<%=candidate.phone%>">
+                        <span class="input-underline"></span>
                     </div>
                     <div class='input-wrapper last-input-wrapper'>
                         <label for="email">Email</label>
                         <input class="form-control" type="text" name="email" placeholder="Email" value="<%=candidate.email%>">
+                        <span class="input-underline"></span>
                     </div>
                     <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
                     <div class="update-button-wrapper">

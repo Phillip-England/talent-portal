@@ -1,16 +1,37 @@
 class Animator {
-    constructor(element, animationClass, animationLength){
-        this.element = element
-        this.animationClass = animationClass
-        this.animationLength = animationLength
+    constructor(){
+
     }
-    animate(eventType){
-        this.element.addEventListener(eventType, () => {
-            this.element.classList.add(this.animationClass)
+    setParams({eventLocation, classHolder, animationClass, eventType, siblingElements} = {}){
+        this.eventLocation = eventLocation
+        this.classHolder = classHolder
+        this.animationClass = animationClass
+        this.eventType = eventType
+        this.siblingElements = siblingElements
+    }
+    animate(animationLength){
+        this.eventLocation.addEventListener(this.eventType, () => {
+            this.classHolder.classList.add(this.animationClass)
             setTimeout(() => {
-                this.element.classList.remove(this.animationClass)
-            }, this.animationLength)
+                this.classHolder.classList.remove(this.animationClass)
+            }, animationLength)
         })
+    }
+    endSiblingAnimations(){
+        for(let x = 0; x < this.siblingElements.length; x++){
+            this.siblingElements[x].classList.remove(this.animationClass)
+        }
+    }
+    animationFreeze(){
+        this.eventLocation.addEventListener(this.eventType, (event) => {
+            this.endSiblingAnimations()
+            this.classHolder.classList.add(this.animationClass)
+            event.stopPropagation()
+        })
+        document.addEventListener('click', () => {
+            this.endSiblingAnimations()
+        })
+
     }
 }
 

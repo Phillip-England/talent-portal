@@ -1,29 +1,29 @@
 <section class="default-section side-buffer">
 
-    <form id="add-candidate-form" class="form-default">
+    <form id="create-candidate-form" class="form-default" action="/candidates/create-candidate">
 
         <h1>Add a Candidate</h1>
 
-        <div class="error-wrapper">
+        <div class="error-message-wrapper">
             <i class="fa-solid fa-circle-exclamation clr-red"></i>
-            <p class="error-message mar-l-md">Error Message</p>
+            <p class="error-message">Error Message</p>
         </div>
-
-        <label for="first_name">First Name<span class="astrick clr-red hide">*</span></label>
+        
+        <label for="first_name">First Name<span class="astrick">*</span></label>
         <input class="form-control form-required" type="text" name="first_name">
-        <div class="underline"></div>
+        <span class="input-underline"></span>
 
-        <label for="last_name">Last Name<span class="astrick clr-red hide">*</span></label>
+        <label for="last_name">Last Name<span class="astrick">*</span></label>
         <input class="form-control form-required" type="text" name="last_name">
-        <div class="underline"></div>
+        <span class="input-underline"></span>
 
         <label for="email">Email</label>
         <input class="form-control" type="text" name="email">
-        <div class="underline"></div>
+        <span class="input-underline"></span>
 
         <label for="phone">Phone</label>
-        <input class="form-control" type="tel" name="phone">
-        <div class="underline last-underline"></div>
+        <input class="form-control last-input" type="tel" name="phone">
+        <span class="input-underline"></span>
 
         <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
 

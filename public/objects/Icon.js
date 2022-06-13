@@ -5,10 +5,6 @@ class Icon {
         this.parent = parent
         this.icon = icon
     }
-    animate(animationClass, eventType, animationLength){
-        let obj = new Animator(this.icon, animationClass, animationLength)
-        obj.animate(eventType)
-    }
     setEventElements(objectOfElements){
         this.eventElements = objectOfElements
     }

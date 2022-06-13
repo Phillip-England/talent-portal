@@ -1,3 +1,4 @@
+import Animator from '../../objects/Animator.js'
 import Icon from '../../objects/Icon.js'
 
 const initCandidateActionIcons = () => {
@@ -11,10 +12,17 @@ const initCandidateActionIcons = () => {
     let candidateDeleteIcons = currentCandidateListing.getElementsByClassName('candidate-delete-icon')
 
     //looping through edit icons
-    for (x = 0; x < candidateEditIcons.length; x++){
+    for (let x = 0; x < candidateEditIcons.length; x++){
         //making each icon an object
         let icon = new Icon(candidateMenus[x], candidateEditIcons[x])
-        icon.animate('icon-click-animation', 'click', 500)
+        let iconAnimation = new Animator()
+        iconAnimation.setParams({
+            eventLocation: candidateEditIcons[x],
+            classHolder: candidateEditIcons[x],
+            animationClass: 'icon-click-animation',
+            eventType: 'click'
+        })
+        iconAnimation.animate(500)
         icon.setEventElements({
             icon: candidateEditIcons[x],
             cancelButton: cancelButtons[x]
@@ -33,17 +41,31 @@ const initCandidateActionIcons = () => {
     }
 
     //looping through interview icons
-    for (x = 0; x < candidateInterviewIcons.length; x++){
+    for (let x = 0; x < candidateInterviewIcons.length; x++){
         //making each icon an object
         let icon = new Icon(candidateMenus[x], candidateInterviewIcons[x])
-        icon.animate('icon-click-animation', 'click', 500)
+        let iconAnimation = new Animator()
+        iconAnimation.setParams({
+            eventLocation: candidateInterviewIcons[x],
+            classHolder: candidateInterviewIcons[x],
+            animationClass: 'icon-click-animation',
+            eventType: 'click'
+        })
+        iconAnimation.animate(500)
     }
 
     //looping through delete icons
-    for (x = 0; x < candidateDeleteIcons.length; x++){
+    for (let x = 0; x < candidateDeleteIcons.length; x++){
         //making each icon an object
         let icon = new Icon(candidateMenus[x], candidateDeleteIcons[x])
-        icon.animate('icon-click-animation', 'click', 500)
+        let iconAnimation = new Animator()
+        iconAnimation.setParams({
+            eventLocation: candidateDeleteIcons[x],
+            classHolder: candidateDeleteIcons[x],
+            animationClass: 'icon-click-animation',
+            eventType: 'click'
+        })
+        iconAnimation.animate(500)
     }
 
 }

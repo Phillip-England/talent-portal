@@ -1,4 +1,5 @@
 import {qsa, qs} from '../service/dom.js'
+import Animator from './Animator.js'
 
 class Form {
     constructor(form){
@@ -30,7 +31,7 @@ class Form {
     }
     isFormComplete(){
         let complete = true
-        for (x = 0; x < this.inputs.length; x++){
+        for (let x = 0; x < this.inputs.length; x++){
             if (this.inputs[x].value == ''){
                 complete = false
                 break
@@ -39,7 +40,7 @@ class Form {
         return complete
     }
     toggleAstricks(){
-        for (x = 0; x < this.requiredInputs.length; x++){
+        for (let x = 0; x < this.requiredInputs.length; x++){
             if (this.requiredInputs[x].value == ''){
                 this.astricks[x].classList.add(this.astrickActiveClass)
             } else {
@@ -65,7 +66,7 @@ class Form {
         let formObject = {}
         let name
         let value
-        for (x = 0; x < this.inputs.length; x++){
+        for (let x = 0; x < this.inputs.length; x++){
             name = this.inputs[x].getAttribute('name')
             value = this.inputs[x].value
             formObject[name] = value

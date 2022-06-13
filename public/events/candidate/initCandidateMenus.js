@@ -10,7 +10,7 @@ const initCandidateMenus = () => {
     let toggleMenus = []
 
     //converting each toggleMenu into a custom object
-    for (x = 0; x < candidateToggleMenus.length; x++){
+    for (let x = 0; x < candidateToggleMenus.length; x++){
         //creating an obj for each candidate menu
         let obj = new CandidateToggleMenu(candidateToggleMenus[x])
         //establishing which elements to associate with the object

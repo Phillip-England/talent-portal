@@ -1,0 +1,16 @@
+.input-underline-active{
+    animation-name: input-underline-animation;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes input-underline-animation {
+    from {
+        width:0%;
+        opacity: 0%;
+    }
+    to {
+        width: 100%;
+        opacity: 100%;
+    }
+}

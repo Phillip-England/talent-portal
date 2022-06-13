@@ -22,7 +22,7 @@
 
 /*ERROR MESSAGE*/
 
-.form-default .error-wrapper{
+.form-default .error-message-wrapper{
     margin-bottom:var(--em-md);
     padding: var(--em-sm);
     display:none;
@@ -35,15 +35,34 @@
     color:white;
 }
 
-.form-default .error-wrapper i{
+.form-default .error-message-active{
+    display:flex;
+}
+
+.form-default .error-message-wrapper i{
     color:white;
+}
+
+.form-default .error-message{
+    margin-left:var(--em-md);
+}
+
+/*ASTRICKS*/
+
+.astrick{
+    color:var(--red);
+    display: none;
+}
+
+.astrick-active{
+    display:inline;
 }
 
 /*LABELS*/
 
 .form-default label{
     font-family:var(--secondary-font);
-    font-size:var(--rem-sm);
+    font-size:var(--rem-xs);
 }
 
 /*INPUTS*/
@@ -67,34 +86,12 @@
     background-color:#e3e3e3;
 }
 
-/*ANIMATED UNDERLINE*/
-
-.form-default .underline{
-    height:1px;
-    width:100%;
-    background-color: var(--main-clr);
-    margin-bottom: var(--em-sm);
-    visibility: hidden;
-    animation-duration: 0.5s;
-}
-
-.form-default .last-underline{
-    margin-bottom: var(--em-md);
-}
-
-@keyframes snap-underline {
-    0% {
-        width:0%;
-        opacity: 0%;
-    }
-    50% {
-        width:100%;
-        opacity: 50%;
-    }
-    100% {
-        width:100%;
-        opacity: 100%;
-    }
+.form-default .input-underline{
+    background-color:var(--main-clr);
+    height: 1px;
+    margin-bottom:var(--em-sm);
+    width: 0%;
+    opacity: 0%;
 }
 
 /*SUBMIT BUTTON*/
@@ -106,7 +103,7 @@
 }
 
 .form-default .button-wrapper button{
-    font-family: var(primarty-font);
+    font-family: var(primary-font);
     width:40%;
     display:flex;
     align-items: center;
@@ -115,22 +112,8 @@
     background-color: var(--main-clr);
     border-radius: 3px;
     color:white;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
 }
 
-@keyframes animate-submit-button {
-    0% {
-        opacity: 100%;
-    }
-    100% {
-        opacity: 20%;
-    }
-}
-
-/* .form-default .button-wrapper button:hover{
-    box-shadow:1px 1px 10px var(--main-clr);
-} */
 
 .form-default .button-wrapper button i{
     padding-left: var(--em-sm);
