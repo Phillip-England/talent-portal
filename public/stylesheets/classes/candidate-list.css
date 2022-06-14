@@ -183,6 +183,7 @@
 
 .candidate-toggle-menu-wrapper .input-underline{
     background-color:var(--main-clr);
+    align-self: start;
     height: 1px;
     margin-bottom:var(--em-sm);
     width: 0%;

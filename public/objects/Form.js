@@ -5,6 +5,7 @@ class Form {
     constructor(form){
         this.form = form
         this.url = this.form.getAttribute('action')
+        this.id = this.form.getAttribute('id')
     }
     setElements({submitButton, inputs, requiredInputs, errorMessage, errorWrapper, astricks, loader} = {}){
         this.submitButton = submitButton
@@ -112,6 +113,11 @@ class Form {
                 this.toggleAstricks()
                 this.revealErrorMessage(err)
             }
+        })
+    }
+    async populateInputs(getUrl){
+        const res = await fetch(getUrl, {
+
         })
     }
 }

@@ -1,5 +1,7 @@
 import Animator from '../../objects/Animator.js'
+import Form from '../../objects/Form.js'
 import Icon from '../../objects/Icon.js'
+import {qs, qsa} from '../../service/dom.js'
 
 const initCandidateActionIcons = () => {
 
@@ -7,6 +9,7 @@ const initCandidateActionIcons = () => {
     let currentCandidateListing = document.getElementById('current-candidate-listing')
     let candidateMenus = document.getElementsByClassName('candidate-toggle-menu-wrapper')
     let cancelButtons = document.getElementsByClassName('cancel-edit-form-button')
+    let candidateEditForms = qsa('.candidate-edit-form', currentCandidateListing)
     let candidateEditIcons = currentCandidateListing.getElementsByClassName('candidate-edit-icon')
     let candidateInterviewIcons = currentCandidateListing.getElementsByClassName('candidate-interview-icon')
     let candidateDeleteIcons = currentCandidateListing.getElementsByClassName('candidate-delete-icon')
@@ -16,6 +19,7 @@ const initCandidateActionIcons = () => {
         //making each icon an object
         let icon = new Icon(candidateMenus[x], candidateEditIcons[x])
         let iconAnimation = new Animator()
+        let form = new Form(candidateEditForms[x])
         iconAnimation.setParams({
             eventLocation: candidateEditIcons[x],
             classHolder: candidateEditIcons[x],

@@ -1,35 +1,43 @@
-import CandidateToggleMenu from '../../objects/CandidateToggleMenu.js'
+import Form from "../../objects/Form.js"
+import Icon from "../../objects/Icon.js"
+import ToggleMenu from "../../objects/ToggleMenu.js"
+import {qs, qsa} from '../../service/dom.js'
 
 const initCandidateMenus = () => {
+    let candidateToggleMenuWrappers = qsa('.candidate-toggle-menu-wrapper')
+    let candidateToggleMenus = qsa('.candidate-toggle-menu')
+    let hiddenCandidateMenus = qsa('.hidden-candidate-menus')
+    let candidateEditIcons = qsa('.candidate-edit-icon')
+    let candidateEditForms = qsa('.candidate-edit-form')
 
-    //collecting our variables
-    let candidateToggleMenus = document.getElementsByClassName('candidate-toggle-menu')
-    let candidateToggleMenuWrappers = document.getElementsByClassName('candidate-toggle-menu-wrapper')
-
-    //this will house all of our HTML menu elements
     let toggleMenus = []
-
-    //converting each toggleMenu into a custom object
+    let editIcons = []
+    let editForms = []
+    
     for (let x = 0; x < candidateToggleMenus.length; x++){
-        //creating an obj for each candidate menu
-        let obj = new CandidateToggleMenu(candidateToggleMenus[x])
-        //establishing which elements to associate with the object
-        obj.setElements({
+        let menu = new ToggleMenu(candidateToggleMenus[x])
+        toggleMenus.push(menu)
+        let editIcon = new Icon(editIcons[x])
+        editIcons.push(editIcons[editIcon])
+        let editForm = new Form(candidateEditForms[x])
+        editForms.push(editForm)
+    }
+
+    for (let x = 0; x < toggleMenus.length; x++){
+        toggleMenus[x].setElements({
             openButton: candidateToggleMenus[x].getElementsByClassName('candidate-open-icon')[0],
             closeButton: candidateToggleMenus[x].getElementsByClassName('candidate-close-icon')[0],
             hiddenMenu: candidateToggleMenuWrappers[x].getElementsByClassName('hidden-candidate-menu')[0],
         })
-        //establishing which css classes will be applyed on click events
-        obj.setClasses({
+        toggleMenus[x].setClasses({
             menuClass: 'candidate-toggle-menu-active',
             openButtonClass: 'candidate-open-icon-dormant',
             closeButtonClass: 'candidate-close-icon-active',
             hiddenMenuClass: 'hidden-candidate-menu-active',
         })
-        //activating the click events stashed in the object
-        obj.initEvents()
-        //collecting the objects
-        toggleMenus.push(obj)
+        toggleMenus[x].setSiblingMenus(toggleMenus)
+        toggleMenus[x].openEvent()
+        toggleMenus[x].closeEvent()
     }
 }
 
