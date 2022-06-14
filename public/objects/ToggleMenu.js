@@ -1,55 +1,39 @@
 class ToggleMenu {
-    constructor(menu) {
-        this.menu = menu
+    constructor() {
         this.open = false
     }
-    setElements({openButton, closeButton, hiddenMenu} = {}){
-        this.openButton = openButton
-        this.closeButton = closeButton
-        this.hiddenMenu = hiddenMenu
+    setToggleElements(objectOfElements){
+        this.toggleElements = objectOfElements
     }
-    setClasses({menuClass, openButtonClass, closeButtonClass, hiddenMenuClass} = {}){
-        this.menuClass = menuClass
-        this.openButtonClass = openButtonClass
-        this.closeButtonClass = closeButtonClass
-        this.hiddenMenuClass = hiddenMenuClass
+    setCssClasses(objectOfCssClasses){
+        this.toggleClasses = objectOfCssClasses
     }
-    setSiblingMenus(siblingMenus){
-        this.siblingMenus = siblingMenus
+    toggle(){
+        Object.keys(this.toggleElements).forEach(key => {
+            if (this.open === false){
+                this.toggleElements[key].classList.add(this.toggleClasses[key])
+            } else {
+                this.toggleElements[key].classList.remove(this.toggleClasses[key])
+            }
+        })
     }
-    addClasses(){
-        this.menu.classList.add(this.menuClass)
-        this.openButton.classList.add(this.openButtonClass)
-        this.closeButton.classList.add(this.closeButtonClass)
-        this.hiddenMenu.classList.add(this.hiddenMenuClass)
-        this.open = !this.open
+    close(){
+        Object.keys(this.toggleElements).forEach(key => {
+            this.toggleElements[key].classList.remove(this.toggleClasses[key])
+        })
     }
-    removeClasses(){
-        this.menu.classList.remove(this.menuClass)
-        this.openButton.classList.remove(this.openButtonClass)
-        this.closeButton.classList.remove(this.closeButtonClass)
-        this.hiddenMenu.classList.remove(this.hiddenMenuClass)
-        this.open = !this.open
-    }
-    closeSiblingMenus(){
-        for (let x = 0; x < this.siblingMenus.length; x++){
-            if (this.siblingMenus[x] !== this && this.siblingMenus[x].open == true){
-                this.siblingMenus[x].removeClasses()
+    closeSiblingMenus(siblingMenus){
+        console.log(siblingMenus)
+        for (let x = 0; x < siblingMenus.length; x++){
+            if (siblingMenus[x] !== this){
+                siblingMenus[x].close()
             }
         }
     }
-    openEvent(){
-        this.openButton.addEventListener('click', (event) => {
-            this.addClasses()
-            this.closeSiblingMenus()
-        })
+    toggleOpenStatus(){
+        this.open = !this.open
     }
-    closeEvent(){
-        this.closeButton.addEventListener('click', (event) => {
-            this.removeClasses()
-        })
-        
-    }
+    
 }
 
 export default ToggleMenu

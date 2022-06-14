@@ -6,6 +6,6 @@ import initCreateCandidateForm from './initCreateCandidateForm.js'
 window.addEventListener('load', () => {
     initCreateCandidateForm()
     initCandidateMenus()
-    initCandidateActionIcons()
+    // initCandidateActionIcons()
     initCandidateEditForm()
 })
