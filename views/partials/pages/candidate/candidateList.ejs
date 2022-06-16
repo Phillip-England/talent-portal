@@ -4,22 +4,22 @@
         
         <div class="candidate-toggle-menu-wrapper">
 
-            <div class="candidate-toggle-menu">
+            <div class="candidate-toggle-menu" active="candidate-toggle-menu-active">
 
                 <div class="candidate-name-wrapper">
                     <h3 class="candidate-name"><%= candidate.firstName %> <%= candidate.lastName %></h3>
                 </div>
     
                 <div class="candidate-icon-wrapper">
-                    <i class="fa-solid fa-angle-up candidate-close-icon"></i>
-                    <i class="fa-solid fa-angle-down candidate-open-icon"></i>
+                    <i class="fa-solid fa-angle-up candidate-close-icon" active="candidate-close-icon-active"></i>
+                    <i class="fa-solid fa-angle-down candidate-open-icon" active="candidate-open-icon-dormant"></i>
                 </div>
     
             </div>
     
-            <div class="hidden-candidate-menu">
+            <div class="hidden-candidate-menu" active="hidden-candidate-menu-active">
 
-                <div class="candidate-details">
+                <div class="candidate-details" active='candidate-details-dormant'>
                     <% if (candidate.phone) { %>
                         <p class="candidate-phone candidate-detail"><%= candidate.phone %></p>
                     <% } else { %>
@@ -32,7 +32,7 @@
                     <% } %>
                 </div>
 
-                <form class="candidate-edit-form" id="<%=candidate._id%>" action="/candidates/update/<%=candidate._id%>">
+                <form class="candidate-edit-form" active="candidate-edit-form-active" id="<%=candidate._id%>" action="/candidates/update/<%=candidate._id%>">
                     <div class="error-message-wrapper">
                         <i class="fa-solid fa-circle-exclamation"></i>
                         <p class="error-message">Error Message</p>
@@ -65,7 +65,7 @@
                 </form>
 
 
-                <div class="candidate-options">
+                <div class="candidate-options" active="candidate-options-dormant">
                     <div class="hidden-menu-icon-wrapper">
                         <i class="fa-solid fa-pen candidate-edit-icon"></i>
                     </div>

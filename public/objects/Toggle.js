@@ -1,50 +1,34 @@
 class Toggle {
-    constructor() {
-        this.open = false
+    constructor(element, position){
+        this.element = element
+        this.position = position
+        this.active = false
+        this.style = String(this.element.getAttribute('active'))
     }
-    setToggleElements(objectOfElements){
-        this.toggleElements = objectOfElements
+    invert(siblings){
+        if (siblings) this.deactivateAll(siblings)
+        if (this.active) {
+            this.deactivate()
+        } else {
+            this.activate()
+        }
     }
-    setCssClasses(objectOfCssClasses){
-        this.toggleClasses = objectOfCssClasses
+    activate(siblings){
+        if (siblings) this.deactivateAll(siblings)
+        this.element.classList.add(this.style)
+        this.active = true
     }
-    setSiblings(siblings){
-        this.siblings = siblings
+    deactivate(){
+        this.element.classList.remove(this.style)
+        this.active = false
     }
-    setOnSwitch(onSwitch){
-        this.onSwitch = onSwitch
-    }
-    setOffSwitch(offSwitch){
-        this.offSwitch = offSwitch
-    }
-    on(){
-        Object.keys(this.toggleElements).forEach(key => {
-            this.toggleElements[key].classList.add(this.toggleClasses[key])
-        })
-        this.open = true
-    }
-    off(){
-        Object.keys(this.toggleElements).forEach(key => {
-            this.toggleElements[key].classList.remove(this.toggleClasses[key])
-        })
-        this.open = false
-    }
-    toggle(){
-    if (this.open === false){
-        this.on()
-    } else {
-        this.off()
-    }
-    }
-    offAll(){
-        for (let x = 0; x < this.siblings.length; x++){
-            if (this.siblings[x] !== this){
-                this.siblings[x].off()
-                this.siblings[x].open = false
+    deactivateAll(siblings){
+        for (let x = 0; x < siblings.length; x++){
+            if (siblings[x].active && siblings[x].position !== this.position) {
+                siblings[x].deactivate()
             }
         }
     }
-    
 }
 
 export default Toggle
