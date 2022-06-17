@@ -11,9 +11,9 @@ const ValidateEmail = require('../../service/objects/ValidateEmail')
 
 const createCandidate = async (req, res) => {
     try {
-        let {first_name, last_name, email, phone} = req.body
-        let validFirstName = new ValidateName(first_name, 'First Name')
-        let validLastName = new ValidateName(last_name, 'Last Name')
+        let {firstName, lastName, email, phone} = req.body
+        let validFirstName = new ValidateName(firstName, 'First Name')
+        let validLastName = new ValidateName(lastName, 'Last Name')
         let validPhone = new ValidateName(phone, 'Phone Number')
         let validEmail = new ValidateName(email, 'Email Address')
         //first name validation
@@ -59,8 +59,8 @@ const createCandidate = async (req, res) => {
 
         //creating a new candidate
         const newCandidate = await Candidate.create({
-            firstName: first_name,
-            lastName: last_name,
+            firstName: firstName,
+            lastName: lastName,
             email: email,
             phone: phone
         })

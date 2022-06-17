@@ -1,28 +1,36 @@
+import Input from './Input.js'
+
 class Formx {
     constructor(form){
         this.form = form
+        this.inputs = []
     }
-    setProperties({submitButton, inputs, requiredInputs, errorMessage, errorWrapper, astricks, loader, getUrl, postUrl} = {}){
-        this.submitButton = submitButton
-        this.inputs = inputs
-        this.requiredInputs = requiredInputs
-        this.errorWrapper = errorWrapper
-        this.errorMessage = errorMessage
-        this.astricks = astricks
-        this.loader = loader
-        this.getUrl = getUrl
-        this.postUrl = postUrl
+    props(name, value){
+        this[name] = value
     }
-    async get(){
-        let res = await fetch(this.getUrl, {
+    initInputs(inputClass){
+        let inputElements = this.form.getElementsByClassName(inputClass)
+        for (let x = 0; x < inputElements.length; x++){
+            this.inputs.push(new Input(inputElements[x]))
+        }
+    }
+    async get(url){
+        let res = await fetch(url, {
             method: 'GET'
         })
         let data = await res.json()
         return data
     }
-    async populateInputs(){
-        let data = await this.get()
-        console.log(data)
+    async populateInputs(url){
+        console.log('hit')
+        let data = await this.get(url)
+        Object.keys(data).forEach(key => {
+            for (let x = 0; x < this.inputs.length; x++){
+                console.log(this.inputs[x])
+                this.inputs[x].setValue(data[key][this.inputs[x].name])
+            }
+        })
+        
     }
 }
 
