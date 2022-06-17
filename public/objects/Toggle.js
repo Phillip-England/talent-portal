@@ -1,9 +1,8 @@
 class Toggle {
-    constructor(element, position){
+    constructor(element, style){
         this.element = element
-        this.position = position
         this.active = false
-        this.style = String(this.element.getAttribute('active'))
+        this.style = style
     }
     invert(siblings){
         if (siblings) this.deactivateAll(siblings)
@@ -24,7 +23,7 @@ class Toggle {
     }
     deactivateAll(siblings){
         for (let x = 0; x < siblings.length; x++){
-            if (siblings[x].active && siblings[x].position !== this.position) {
+            if (siblings[x].active && siblings[x] !== this) {
                 siblings[x].deactivate()
             }
         }
