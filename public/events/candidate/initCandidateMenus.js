@@ -2,17 +2,13 @@ import Form from "../../objects/Form.js"
 import Formx from "../../objects/Formx.js"
 import Icon from "../../objects/Icon.js"
 import Toggle from "../../objects/Toggle.js"
+import ToggleFactory from "../../objects/ToggleFactory.js"
 import {qs, qsa} from '../../service/dom.js'
 
 const initCandidateMenus = async () => {
 
-    let menus = []
-    let hiddenMenus = []
-    let closeIcons = []
-    let openIcons = []
-    let editForms = []
-    let options = []
-    let details = []
+    let toggleFactory = new ToggleFactory()
+
     let forms = []
 
     let candidateMenus = qsa('.candidate-toggle-menu')
@@ -25,22 +21,21 @@ const initCandidateMenus = async () => {
     let candidateEditIcons = qsa('.candidate-edit-icon')
     let cancelEditButton = qsa('.cancel-edit-form-button')
 
+    let menus = toggleFactory.build(candidateMenus, 'candidate-toggle-menu-active')
+    let hiddenMenus = toggleFactory.build(hiddenCandidateMenus, 'hidden-candidate-menu-active')
+    let closeIcons = toggleFactory.build(candidateCloseIcons, 'candidate-close-icon-active')
+    let openIcons = toggleFactory.build(candidateOpenIcons, 'candidate-open-icon-dormant')
+    let editForms = toggleFactory.build(candidateEditForms, 'candidate-edit-form-active')
+    let options = toggleFactory.build(candidateOptions, 'candidate-options-dormant')
+    let details = toggleFactory.build(candidateDetails, 'candidate-details-dormant')
+
     for(let x = 0; x < candidateMenus.length; x++){
-
-        menus.push(new Toggle(candidateMenus[x], 'candidate-toggle-menu-active'))
-        hiddenMenus.push(new Toggle(hiddenCandidateMenus[x], 'hidden-candidate-menu-active'))
-        closeIcons.push(new Toggle(candidateCloseIcons[x], 'candidate-close-icon-active'))
-        openIcons.push(new Toggle(candidateOpenIcons[x], 'candidate-open-icon-dormant'))
-        editForms.push(new Toggle(candidateEditForms[x], 'candidate-edit-form-active'))
-        options.push(new Toggle(candidateOptions[x], 'candidate-options-dormant'))
-        details.push(new Toggle(candidateDetails[x], 'candidate-details-dormant'))
-
         forms.push(new Formx(candidateEditForms[x]))
         forms[x].initInputs('form-control')
         forms[x].props('getUrl', `/candidates/${forms[x].form.getAttribute('id')}`)
     }
 
-    for(let x = 0; x < qsa('.candidate-toggle-menu').length; x++){
+    for(let x = 0; x < candidateMenus.length; x++){
 
         candidateMenus[x].addEventListener('click', () => {
             forms[x].populateInputs(forms[x].getUrl)
@@ -48,7 +43,6 @@ const initCandidateMenus = async () => {
             hiddenMenus[x].invert(hiddenMenus)
             closeIcons[x].invert(closeIcons)
             openIcons[x].invert(openIcons)
-
         })
 
         candidateEditIcons[x].addEventListener('click', () => {
@@ -62,6 +56,34 @@ const initCandidateMenus = async () => {
             options[x].invert(options)
             details[x].invert(details)
         })
+
+        forms[x].onInput((input) => {
+            console.log(input)
+            switch (input.name) {
+                case 'phone':
+                    input.phoneFormat()
+                    break
+                case 'firstName':
+                    input.capFirstLetter()
+                    input.require()
+                    break
+                case 'lastName':
+                    input.capFirstLetter()
+                    input.require()
+                    break
+                default: 
+                    break
+
+            }
+        })
+
+        forms[x].onSubmit((event, form) => {
+            event.preventDefault()
+            form.load(qs('.main-loading-icon'), 'main-loader-active')
+        })
+
+
+
     }
     
 
