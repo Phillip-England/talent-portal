@@ -8,10 +8,10 @@ const chars = require('../../service/chars')
 const updateCandidate = async (req, res) => {
     try {
 
-        const {first_name, last_name, phone, email} = req.body
+        const {firstName, lastName, phone, email} = req.body
 
-        const validFirstName = new ValidateName(first_name, 'First Name')
-        const validLastName = new ValidateName(last_name, 'Last Name')
+        const validFirstName = new ValidateName(firstName, 'First Name')
+        const validLastName = new ValidateName(lastName, 'Last Name')
         const validPhone = new ValidatePhone(phone, 'Phone Number')
         const validEmail = new ValidateEmail(email, 'Email Address')
 
@@ -49,15 +49,12 @@ const updateCandidate = async (req, res) => {
         //phone
         validPhone.setConstraints({
             whiteList: chars.whitelistPhone(),
-            maxLength: 12,
+            minLength: 12,
         })
-        validPhone.format()
         validPhone.runValidation()
 
         //email
         validEmail.runValidation()
-
-        console.log(req.params.candidate)
 
         //updating in db
         const updatedCandidate = await Candidate.findByIdAndUpdate({_id: req.params.candidate}, {

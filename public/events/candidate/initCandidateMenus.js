@@ -33,6 +33,9 @@ const initCandidateMenus = async () => {
         forms.push(new Formx(candidateEditForms[x]))
         forms[x].initInputs('form-control')
         forms[x].props('getUrl', `/candidates/${forms[x].form.getAttribute('id')}`)
+        forms[x].props('postUrl', `/candidates/update/${forms[x].form.getAttribute('id')}`)
+        forms[x].props('errorWrapper', qs('.error-message-wrapper', forms[x].form))
+        forms[x].props('errorMessage', qs('.error-message', forms[x].form))
     }
 
     for(let x = 0; x < candidateMenus.length; x++){
@@ -58,7 +61,6 @@ const initCandidateMenus = async () => {
         })
 
         forms[x].onInput((input) => {
-            console.log(input)
             switch (input.name) {
                 case 'phone':
                     input.phoneFormat()
@@ -77,9 +79,16 @@ const initCandidateMenus = async () => {
             }
         })
 
-        forms[x].onSubmit((event, form) => {
+        forms[x].onSubmit(async (event, form) => {
             event.preventDefault()
-            form.load(qs('.main-loading-icon'), 'main-loader-active')
+            // form.load(qs('.main-loading-icon'), 'main-loader-active')
+            let res = await form.post([forms[x].postUrl])
+            if (form.errorCheck(res)) {
+                form.displayErrorWrapper(forms[x].errorWrapper, 'error-message-active')
+                form.setErrorMessage(forms[x].errorMessage, res.error)
+                return
+            }
+            form.hideErrorWrapper(forms[x].errorWrapper, 'error-message-active')
         })
 
 

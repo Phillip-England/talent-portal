@@ -4,7 +4,6 @@ class Formx {
     constructor(form){
         this.form = form
         this.inputs = []
-        this.loading = false
     }
     props(name, value){
         this[name] = value
@@ -25,13 +24,34 @@ class Formx {
         let data = await res.json()
         return data
     }
+    async post(url){
+        let res = await fetch(url, {
+            method: "POST",
+            body: this.getFormData(),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        let data = await res.json()
+        return data
+    }
     async populateInputs(url){
         let data = await this.get(url)
         Object.keys(data).forEach(key => {
             for (let x = 0; x < this.inputs.length; x++){
-                this.inputs[x].setValue(data[key][this.inputs[x].name])
+                if (data[key][this.inputs[x].name] !== undefined){
+                    this.inputs[x].setValue(data[key][this.inputs[x].name])
+                }
             }
         })
+    }
+    getFormData(){
+        let data = {}
+        for (let x = 0; x < this.inputs.length; x++){
+            data[this.inputs[x].name] = this.inputs[x].element.value
+        }
+        return JSON.stringify(data)
     }
     onInput(callback){
         for (let x = 0; x < this.inputs.length; x++){
@@ -40,7 +60,7 @@ class Formx {
             })
         }
     }
-    onSubmit(callback){
+    async onSubmit(callback){
         this.form.addEventListener('submit', (event) => {
             callback(event, this)
         })
@@ -51,6 +71,19 @@ class Formx {
         } else {
             loadingElement.classList.add(activeClass)
         }
+    }
+    errorCheck(data){
+        if (data.error) return true
+        return false
+    }
+    displayErrorWrapper(wrapper, style){
+        wrapper.classList.add(style)
+    }
+    hideErrorWrapper(wrapper, style){
+        wrapper.classList.remove(style)
+    }
+    setErrorMessage(element, message){
+        element.innerText = message
     }
 }
 

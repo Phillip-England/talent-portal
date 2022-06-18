@@ -32,7 +32,7 @@ class Input {
         }
         switch (this.element.value.length) {
             default:
-                if (this.element.value.length < 3){
+                if (this.element.value.length < 4){
                     this.threeTrigger = true
                 }
                 if (this.element.value.length < 7){
@@ -55,6 +55,8 @@ class Input {
                 }
                 break
         }
+        console.log(this.element.value)
+        console.log(this.element.value.indexOf('-', this.element.value.indexOf('-')))
     }
     require(){
         if (this.astrick === undefined){
