@@ -2,18 +2,18 @@ import Input from './Input.js'
 
 class Form {
     constructor(form){
-        this.form = form
+        this.element = form
         this.inputs = []
     }
     props(name, value){
         this[name] = value
     }
     initInputs(inputClass){
-        let inputElements = this.form.getElementsByClassName(inputClass)
+        let inputElements = this.element.getElementsByClassName(inputClass)
         let inputObj
         for (let x = 0; x < inputElements.length; x++){
             inputObj = new Input(inputElements[x])
-            inputObj.assignLabel(this.form.querySelector(`label[for='${inputObj.name}']`))
+            inputObj.assignLabel(this.element.querySelector(`label[for='${inputObj.name}']`))
             if (inputObj.element.classList.contains('required')) inputObj.require()
             this.inputs.push(inputObj)
         }
@@ -62,7 +62,7 @@ class Form {
         }
     }
     async onSubmit(callback){
-        this.form.addEventListener('submit', (event) => {
+        this.element.addEventListener('submit', (event) => {
             callback(event, this)
         })
     }

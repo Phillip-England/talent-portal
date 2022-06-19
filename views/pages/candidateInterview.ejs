@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/general/styles.ejs') %>
+    <title><%=candidate.firstName%> <%=candidate.lastName%></title>
+</head>
+<body>
+
+    <%- include('../partials/general/loading.ejs') %> 
+
+    <%- include('../partials/pages/multiple/nav.ejs') %>
+
+    <section class="candidate-interview-section default-section side-buffer">
+
+        <div class="candidate-interview-heading">
+            <h3 class="candidate-name"><%=candidate.firstName%> <%=candidate.lastName%></h1>
+            <p class="candidate-detail phone"><%=candidate.phone%></p>
+            <p class="candidate-detail email"><%=candidate.email%></p>
+        </div>
+
+    </section>
+
+
+    <!-- SERVICE FUNCTIONS -->
+    <%- include("../partials/general/scripts.ejs") %>
+
+</body>
+</html>

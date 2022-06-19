@@ -1,0 +1,43 @@
+.candidate-interview-section{
+    display: grid;
+    grid-auto-columns: 100%;
+    grid-template-areas: 
+        'heading'
+    ;
+}
+
+.candidate-interview-section .candidate-interview-heading{
+    background-color: white;
+    border-radius: 3px;
+    display:grid;
+    grid-area: heading;
+    padding:var(--pad-sm);
+    grid-template-areas: 
+        'name'
+        'phone'
+        'email'
+    ;
+}
+
+.candidate-interview-section .candidate-name{
+    font-size:var(--rem-md);
+    font-family:var(--secondary-font);
+    color:var(--main-clr);
+    grid-area:name;
+    padding-left: var(--pad-xs);
+    margin-bottom: var(--mar-xxs);
+}
+
+.candidate-interview-section .candidate-detail{
+    font-size:var(--rem-sm);
+    font-family:var(--primary-font);
+    padding-left: var(--pad-xs);
+}
+
+.candidate-interview-section .phone{
+    grid-area: phone;
+}
+
+.candidate-interview-section .email{
+    grid-area: email;
+}

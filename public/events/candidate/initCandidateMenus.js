@@ -23,6 +23,7 @@ const initCandidateMenus = async () => {
     let cancelEditButtons = qsa('.cancel-edit-form-button')
     let cancelDeleteButtons = qsa('.cancel-delete-candidate-button')
     let candidateDeleteButtons = qsa('.candidate-delete-button')
+    let candidateInterviewIcons = qsa('.candidate-interview-icon')
 
     let menus = toggleFactory.build(candidateMenus, 'candidate-toggle-menu-active')
     let hiddenMenus = toggleFactory.build(hiddenCandidateMenus, 'hidden-candidate-menu-active')
@@ -36,10 +37,10 @@ const initCandidateMenus = async () => {
     for(let x = 0; x < candidateMenus.length; x++){
         forms.push(new Form(candidateEditForms[x]))
         forms[x].initInputs('form-control')
-        forms[x].props('getUrl', `/candidates/${forms[x].form.getAttribute('id')}`)
-        forms[x].props('postUrl', `/candidates/update/${forms[x].form.getAttribute('id')}`)
-        forms[x].props('errorWrapper', qs('.error-message-wrapper', forms[x].form))
-        forms[x].props('errorMessage', qs('.error-message', forms[x].form))
+        forms[x].props('getUrl', `/candidates/${forms[x].element.getAttribute('id')}`)
+        forms[x].props('postUrl', `/candidates/update/${forms[x].element.getAttribute('id')}`)
+        forms[x].props('errorWrapper', qs('.error-message-wrapper', forms[x].element))
+        forms[x].props('errorMessage', qs('.error-message', forms[x].element))
     }
 
     for(let x = 0; x < candidateMenus.length; x++){
@@ -84,6 +85,14 @@ const initCandidateMenus = async () => {
             })
             candidateMenuWrappers[x].remove()
         })
+
+        // candidateInterviewIcons[x].addEventListener('click', async (event) => {
+        //     let id = event.target.getAttribute('id')
+        //     let url = `/candidates/interview/${id}`
+        //     let res = await fetch(url, {
+        //         method: 'GET',
+        //     })
+        // })
 
         forms[x].onInput((event, input) => {
             switch (input.name) {

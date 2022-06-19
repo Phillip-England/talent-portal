@@ -6,8 +6,8 @@ const initCreateCandidateForm = async () => {
     let form = new Form(createCandidateForm)
     form.initInputs('form-control')
     form.props('postUrl', '/candidates/create-candidate')
-    form.props('errorWrapper', qs('.error-message-wrapper', form.form))
-    form.props('errorMessage', qs('.error-message', form.form))
+    form.props('errorWrapper', qs('.error-message-wrapper', form.element))
+    form.props('errorMessage', qs('.error-message', form.element))
     form.props
     form.onInput((event, input) => {
         switch (input.name) {

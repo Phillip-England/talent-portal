@@ -14,7 +14,7 @@
 
 /*ACTUAL MENU*/
 
-.candidate-toggle-menu{
+.candidate-toggle-menu-wrapper .candidate-toggle-menu{
     width: 100%;
     grid-area: title;
     display: flex;
@@ -26,7 +26,7 @@
     border-top-right-radius: 5px;
 }
 
-.candidate-toggle-menu-active{
+.candidate-toggle-menu-wrapper .candidate-toggle-menu-active{
     background-color: var(--main-clr);
     animation-duration: 0.25s;
     color:var(--white);

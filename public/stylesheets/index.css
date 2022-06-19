@@ -49,5 +49,12 @@ button{
     --rem-md:1.25rem;
     --rem-lg:1.5rem;
     --rem-xl:1.75rem;
+    /*PADDING*/
+    --pad-xs:10px;
+    --pad-sm:15px;
+    /*MARGIN*/
+    --mar-xxs:5px;
+    --mar-xs:10px;
+    --mar-sm:15px;
 }
 
