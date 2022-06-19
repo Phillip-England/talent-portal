@@ -1,6 +1,4 @@
 import Form from "../../objects/Form.js"
-import Formx from "../../objects/Formx.js"
-import Icon from "../../objects/Icon.js"
 import Toggle from "../../objects/Toggle.js"
 import ToggleFactory from "../../objects/ToggleFactory.js"
 import {qs, qsa} from '../../service/dom.js'
@@ -12,6 +10,7 @@ const initCandidateMenus = async () => {
     let forms = []
 
     let candidateMenus = qsa('.candidate-toggle-menu')
+    let candidateMenuWrappers = qsa('.candidate-toggle-menu-wrapper')
     let hiddenCandidateMenus = qsa('.hidden-candidate-menu')
     let candidateCloseIcons = qsa('.candidate-close-icon')
     let candidateOpenIcons = qsa('.candidate-open-icon')
@@ -19,10 +18,15 @@ const initCandidateMenus = async () => {
     let candidateOptions = qsa('.candidate-options')
     let candidateDetails = qsa('.candidate-details')
     let candidateEditIcons = qsa('.candidate-edit-icon')
-    let cancelEditButton = qsa('.cancel-edit-form-button')
+    let candidateDeleteIcons = qsa('.candidate-delete-icon')
+    let candidateDeleteMenus = qsa('.candidate-delete-menu')
+    let cancelEditButtons = qsa('.cancel-edit-form-button')
+    let cancelDeleteButtons = qsa('.cancel-delete-candidate-button')
+    let candidateDeleteButtons = qsa('.candidate-delete-button')
 
     let menus = toggleFactory.build(candidateMenus, 'candidate-toggle-menu-active')
     let hiddenMenus = toggleFactory.build(hiddenCandidateMenus, 'hidden-candidate-menu-active')
+    let deleteMenus = toggleFactory.build(candidateDeleteMenus, 'candidate-delete-menu-active')
     let closeIcons = toggleFactory.build(candidateCloseIcons, 'candidate-close-icon-active')
     let openIcons = toggleFactory.build(candidateOpenIcons, 'candidate-open-icon-dormant')
     let editForms = toggleFactory.build(candidateEditForms, 'candidate-edit-form-active')
@@ -30,7 +34,7 @@ const initCandidateMenus = async () => {
     let details = toggleFactory.build(candidateDetails, 'candidate-details-dormant')
 
     for(let x = 0; x < candidateMenus.length; x++){
-        forms.push(new Formx(candidateEditForms[x]))
+        forms.push(new Form(candidateEditForms[x]))
         forms[x].initInputs('form-control')
         forms[x].props('getUrl', `/candidates/${forms[x].form.getAttribute('id')}`)
         forms[x].props('postUrl', `/candidates/update/${forms[x].form.getAttribute('id')}`)
@@ -42,7 +46,7 @@ const initCandidateMenus = async () => {
 
         candidateMenus[x].addEventListener('click', () => {
             forms[x].populateInputs(forms[x].getUrl)
-            menus[x].invert(menus.concat(editForms, options, details))
+            menus[x].invert(menus.concat(editForms, options, details, deleteMenus))
             hiddenMenus[x].invert(hiddenMenus)
             closeIcons[x].invert(closeIcons)
             openIcons[x].invert(openIcons)
@@ -54,16 +58,37 @@ const initCandidateMenus = async () => {
             details[x].invert(details)
         })
 
-        cancelEditButton[x].addEventListener('click', () => {
+        cancelEditButtons[x].addEventListener('click', () => {
             editForms[x].invert(editForms)
             options[x].invert(options)
             details[x].invert(details)
         })
 
-        forms[x].onInput((input) => {
+        candidateDeleteIcons[x].addEventListener('click', () => {
+            deleteMenus[x].invert(deleteMenus)
+            options[x].invert(options)
+            details[x].invert(details)
+        })
+
+        cancelDeleteButtons[x].addEventListener('click', () => {
+            deleteMenus[x].invert(deleteMenus)
+            options[x].invert(options)
+            details[x].invert(details)
+        })
+
+        candidateDeleteButtons[x].addEventListener('click', async (event) => {
+            let id = event.target.getAttribute('id')
+            let url = `/candidates/delete/${id}`
+            let res = await fetch(url, {
+                method: 'DELETE',
+            })
+            candidateMenuWrappers[x].remove()
+        })
+
+        forms[x].onInput((event, input) => {
             switch (input.name) {
                 case 'phone':
-                    input.phoneFormat()
+                    input.phoneFormat(event)
                     break
                 case 'firstName':
                     input.capFirstLetter()
@@ -81,14 +106,16 @@ const initCandidateMenus = async () => {
 
         forms[x].onSubmit(async (event, form) => {
             event.preventDefault()
-            // form.load(qs('.main-loading-icon'), 'main-loader-active')
+            form.load(qs('.main-loading-icon'), 'main-loader-active')
             let res = await form.post([forms[x].postUrl])
             if (form.errorCheck(res)) {
                 form.displayErrorWrapper(forms[x].errorWrapper, 'error-message-active')
                 form.setErrorMessage(forms[x].errorMessage, res.error)
+                form.load(qs('.main-loading-icon'), 'main-loader-active')
                 return
             }
             form.hideErrorWrapper(forms[x].errorWrapper, 'error-message-active')
+            location.reload()
         })
 
 

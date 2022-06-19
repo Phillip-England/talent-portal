@@ -14,8 +14,8 @@ const createCandidate = async (req, res) => {
         let {firstName, lastName, email, phone} = req.body
         let validFirstName = new ValidateName(firstName, 'First Name')
         let validLastName = new ValidateName(lastName, 'Last Name')
-        let validPhone = new ValidateName(phone, 'Phone Number')
-        let validEmail = new ValidateName(email, 'Email Address')
+        let validPhone = new ValidatePhone(phone, 'Phone Number')
+        let validEmail = new ValidateEmail(email, 'Email Address')
         //first name validation
         validFirstName.setConstraints({
             maxLength: 30,
@@ -53,10 +53,6 @@ const createCandidate = async (req, res) => {
         validPhone.runValidation()
         //email validation
         validEmail.runValidation()
-
-       
-
-
         //creating a new candidate
         const newCandidate = await Candidate.create({
             firstName: firstName,

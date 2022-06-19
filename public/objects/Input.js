@@ -23,40 +23,14 @@ class Input {
             this.element.value = this.element.value.toUpperCase()
         }
     }
-    phoneFormat(){
-        if (!this.threeTrigger){
-            this.threeTrigger = false
-        }
-        if (!this.sevenTrigger){
-            this.sevenTrigger = false
-        }
-        switch (this.element.value.length) {
-            default:
-                if (this.element.value.length < 4){
-                    this.threeTrigger = true
-                }
-                if (this.element.value.length < 7){
-                    this.sevenTrigger = true
-                }
-                if (this.element.value.length > 12){
-                    this.element.value = this.element.value.slice(0, -1)
-                }
-                break
-            case 3:
-                if (this.threeTrigger == true){
-                    this.element.value = this.element.value + '-'
-                    this.threeTrigger = false
-                }
-                break
-            case 7:
-                if (this.sevenTrigger == true){
-                    this.element.value = this.element.value + '-'
-                    this.sevenTrigger = false
-                }
-                break
-        }
-        console.log(this.element.value)
-        console.log(this.element.value.indexOf('-', this.element.value.indexOf('-')))
+    phoneFormat(event){
+        this.phoneArray = []
+        for (let x = 0; x < this.element.value.length; x++) this.phoneArray.push(this.element.value[x])
+        for (let x = 0; x < this.phoneArray.length; x++) if ((x === 3 || x === 7) && this.phoneArray[x] !== '-') this.phoneArray.splice(x, 0, '-')
+        if (this.phoneArray.length === 13) this.phoneArray.pop()
+        this.element.value = ''
+        for (let x = 0; x < this.phoneArray.length; x++) this.element.value += this.phoneArray[x]
+        
     }
     require(){
         if (this.astrick === undefined){

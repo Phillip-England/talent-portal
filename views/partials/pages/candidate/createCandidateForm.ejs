@@ -1,6 +1,6 @@
 <section class="default-section side-buffer">
 
-    <form id="create-candidate-form" class="form-default" action="/candidates/create-candidate">
+    <form id="create-candidate-form" class="form-default">
 
         <h1>Add a Candidate</h1>
 
@@ -9,20 +9,20 @@
             <p class="error-message">Error Message</p>
         </div>
         
-        <label for="firstName">First Name<span class="astrick">*</span></label>
-        <input class="form-control form-required" type="text" name="first_name">
+        <label for="firstName">First Name</label>
+        <input class="form-control required" type="text" name="firstName">
         <span class="input-underline"></span>
 
-        <label for="lastName">Last Name<span class="astrick">*</span></label>
-        <input class="form-control form-required" type="text" name="last_name">
-        <span class="input-underline"></span>
-
-        <label for="email">Email</label>
-        <input class="form-control" type="text" name="email">
+        <label for="lastName">Last Name</label>
+        <input class="form-control required" type="text" name="lastName">
         <span class="input-underline"></span>
 
         <label for="phone">Phone</label>
         <input class="form-control last-input" type="tel" name="phone">
+        <span class="input-underline"></span>
+
+        <label for="email">Email</label>
+        <input class="form-control" type="text" name="email">
         <span class="input-underline"></span>
 
         <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>

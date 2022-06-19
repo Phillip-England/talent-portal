@@ -1,124 +1,90 @@
-import {qsa, qs} from '../service/dom.js'
-import Animator from './Animator.js'
+import Input from './Input.js'
 
 class Form {
     constructor(form){
         this.form = form
-        this.url = this.form.getAttribute('action')
-        this.id = this.form.getAttribute('id')
+        this.inputs = []
     }
-    setElements({submitButton, inputs, requiredInputs, errorMessage, errorWrapper, astricks, loader} = {}){
-        this.submitButton = submitButton
-        this.inputs = inputs
-        this.requiredInputs = requiredInputs
-        this.errorWrapper = errorWrapper
-        this.errorMessage = errorMessage
-        this.astricks = astricks
-        this.loader = loader
+    props(name, value){
+        this[name] = value
     }
-    setClasses({astrickActiveClass, errorActiveClass, loaderActiveClass} = {}){
-        this.astrickActiveClass = astrickActiveClass
-        this.errorActiveClass = errorActiveClass
-        this.loaderActiveClass = loaderActiveClass
-    }
-    checkParameters(){
-        console.log(this.form)
-        console.log(this.submitButton)
-        console.log(this.inputs)
-        console.log(this.requiredInputs)
-        console.log(this.astricks)
-        console.log(this.errorMessage)
-        console.log(this.errorWrapper)
-    }
-    isFormComplete(){
-        let complete = true
-        for (let x = 0; x < this.inputs.length; x++){
-            if (this.inputs[x].value == ''){
-                complete = false
-                break
-            }
-        }
-        return complete
-    }
-    toggleAstricks(){
-        for (let x = 0; x < this.requiredInputs.length; x++){
-            if (this.requiredInputs[x].value == ''){
-                this.astricks[x].classList.add(this.astrickActiveClass)
-            } else {
-                this.astricks[x].classList.remove(this.astrickActiveClass)
-            }
+    initInputs(inputClass){
+        let inputElements = this.form.getElementsByClassName(inputClass)
+        let inputObj
+        for (let x = 0; x < inputElements.length; x++){
+            inputObj = new Input(inputElements[x])
+            inputObj.assignLabel(this.form.querySelector(`label[for='${inputObj.name}']`))
+            if (inputObj.element.classList.contains('required')) inputObj.require()
+            this.inputs.push(inputObj)
         }
     }
-    revealErrorMessage(message){
-        this.errorWrapper.classList.add(this.errorActiveClass)
-        this.errorMessage.innerText = message
+    async get(url){
+        let res = await fetch(url, {
+            method: 'GET'
+        })
+        let data = await res.json()
+        return data
     }
-    hideErrorMessage(){
-        this.errorWrapper.classList.remove(this.errorActiveClass)
-        this.errorMessage.innerText = ''
-    }
-    revealLoader(){
-        this.loader.classList.add(this.loaderActiveClass)
-    }
-    removeLoader(){
-        this.loader.classList.remove(this.loaderActiveClass)
-    }
-    getFormData(){
-        let formObject = {}
-        let name
-        let value
-        for (let x = 0; x < this.inputs.length; x++){
-            name = this.inputs[x].getAttribute('name')
-            value = this.inputs[x].value
-            formObject[name] = value
-        }
-        return JSON.stringify(formObject)
-    }
-    async formFetch(values){
-        let res = await fetch(this.url, {
+    async post(url){
+        let res = await fetch(url, {
             method: "POST",
-            body: values,
+            body: this.getFormData(),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
         })
-        //getting data from fetch
         let data = await res.json()
         return data
     }
-    submit(){
-        this.form.addEventListener('submit', async(event) => {
-            try {
-                event.preventDefault()
-                console.log(this.url)
-                //displaying our loader
-                this.revealLoader()
-                //checking if the form is complete
-                if (this.isFormComplete() == false){
-                    this.toggleAstricks()
-                    this.removeLoader()
-                    throw('Please fill out the required form fields')
+    async populateInputs(url){
+        let data = await this.get(url)
+        Object.keys(data).forEach(key => {
+            for (let x = 0; x < this.inputs.length; x++){
+                if (data[key][this.inputs[x].name] !== undefined){
+                    this.inputs[x].setValue(data[key][this.inputs[x].name])
                 }
-                //getting form data
-                let formValues = this.getFormData()
-                //making our fetch request
-                let data = await this.formFetch(formValues)
-                if (data.error){
-                    throw(data.error)
-                }
-                location.reload()
-            } catch (err) {
-                this.removeLoader()
-                this.toggleAstricks()
-                this.revealErrorMessage(err)
             }
         })
     }
-    async populateInputs(getUrl){
-        const res = await fetch(getUrl, {
-
+    getFormData(){
+        let data = {}
+        for (let x = 0; x < this.inputs.length; x++){
+            data[this.inputs[x].name] = this.inputs[x].element.value
+        }
+        return JSON.stringify(data)
+    }
+    onInput(callback){
+        for (let x = 0; x < this.inputs.length; x++){
+            this.inputs[x].element.addEventListener('input', (event) => {
+                callback(event, this.inputs[x])
+            })
+        }
+    }
+    async onSubmit(callback){
+        this.form.addEventListener('submit', (event) => {
+            callback(event, this)
         })
+    }
+    load(loadingElement, activeClass){
+        if (loadingElement.classList.contains(activeClass)){
+            loadingElement.classList.remove(activeClass)
+        } else {
+            loadingElement.classList.add(activeClass)
+        }
+    }
+    errorCheck(data){
+        if (data.error) return true
+        return false
+    }
+    displayErrorWrapper(wrapper, style){
+        wrapper.classList.add(style)
+    }
+    hideErrorWrapper(wrapper, style){
+        wrapper.classList.remove(style)
+    }
+    setErrorMessage(element, message){
+        element.innerText = message
     }
 }
 

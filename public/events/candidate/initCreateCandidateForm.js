@@ -1,38 +1,45 @@
 import Form from '../../objects/Form.js'
 import {qsa, qs} from '../../service/dom.js'
-import Animator from '../../objects/Animator.js'
 
 const initCreateCandidateForm = async () => {
-    const createCandidateForm = qs('#create-candidate-form')
-    const inputUnderlines = qsa('.input-underline', createCandidateForm)
-    const inputs = qsa('.form-control', createCandidateForm)
-    const form = new Form(createCandidateForm)
-    for(let x = 0; x < inputUnderlines.length; x++){
-        let animatedUnderline = new Animator()
-        animatedUnderline.setParams({
-            eventLocation: inputs[x],
-            classHolder: inputUnderlines[x],
-            animationClass: 'input-underline-active',
-            eventType: 'click',
-            siblingElements: inputUnderlines
-        })
-        animatedUnderline.animationFreeze()
-    }
-    form.setElements({
-        submitButton: qs('.submit-button', createCandidateForm),
-        inputs: qsa('.form-control', createCandidateForm),
-        requiredInputs: qsa('.form-required', createCandidateForm),
-        astricks: qsa('.astrick', createCandidateForm),
-        errorWrapper: qs('.error-message-wrapper', createCandidateForm),
-        errorMessage: qs('.error-message', createCandidateForm),
-        loader: qs('.main-loading-icon'),
+    let createCandidateForm = qs('#create-candidate-form')
+    let form = new Form(createCandidateForm)
+    form.initInputs('form-control')
+    form.props('postUrl', '/candidates/create-candidate')
+    form.props('errorWrapper', qs('.error-message-wrapper', form.form))
+    form.props('errorMessage', qs('.error-message', form.form))
+    form.props
+    form.onInput((event, input) => {
+        switch (input.name) {
+            case 'phone':
+                input.phoneFormat(event)
+                break
+            case 'firstName':
+                input.capFirstLetter()
+                input.require()
+                break
+            case 'lastName':
+                input.capFirstLetter()
+                input.require()
+                break
+            default: 
+                break
+
+        }
     })
-    form.setClasses({
-        astrickActiveClass: 'astrick-active',
-        errorActiveClass: 'error-message-active',
-        loaderActiveClass: 'main-loader-active'
+    form.onSubmit( async (event) => {
+        event.preventDefault()
+        form.load(qs('.main-loading-icon'), 'main-loader-active')
+        let res = await form.post(form.postUrl)
+        if (form.errorCheck(res)) {
+            form.displayErrorWrapper(form.errorWrapper, 'error-message-active')
+            form.setErrorMessage(form.errorMessage, res.error)
+            form.load(qs('.main-loading-icon'), 'main-loader-active')
+            return
+        }
+        form.hideErrorWrapper(form.errorWrapper, 'error-message-active')
+        location.reload()
     })
-    form.submit()
 }
 
 export default initCreateCandidateForm

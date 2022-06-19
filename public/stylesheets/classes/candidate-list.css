@@ -239,3 +239,35 @@
     aspect-ratio: 1 / 1;
     z-index: 2;
 }
+
+/*CANDIDATE DELETE MENU*/
+
+.candidate-delete-menu{
+    display:none;
+    padding: var(--em-sm);
+}
+
+.confirmation-text{
+    font-family: var(--secondary-font);
+    font-size: var(--rem-sm);
+    align-self: center;
+    justify-self: center;
+    padding: var(--em-sm);
+    grid-area:confirmation;
+}
+
+.delete-menu-button-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: var(--em-sm);
+    padding-bottom: var(--em-md);
+}
+
+.candidate-delete-menu-active{
+    display:grid;
+    grid-template-areas: 
+        'confirmation'
+        'buttons'
+    ;
+}

@@ -9,7 +9,7 @@ class ValidateEmail extends Validate{
         if (this.required){
             this.completed(this.requiredError || `${this.name} is required`)
         }
-        if (validator.isEmail(this.value) == false){
+        if (this.value !== '' && validator.isEmail(this.value) == false){
             throw new Error('Please provide a valid email')
         }
         this.value = validator.escape(this.value)

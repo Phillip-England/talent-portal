@@ -5,7 +5,6 @@ class ValidatePhone extends Validate {
         super(value, name)
     }
     format(){
-        //removing anything that is not a number
         let onlyNumbers = ''
         let formattedNumber = ''
         for (let x = 0; x < this.value.length; x++){
