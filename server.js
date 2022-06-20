@@ -23,6 +23,7 @@ app.use('/user', require('./routes/userRoutes'))
 app.use('/candidates', require('./routes/candidateRoutes'))
 app.use('/questions', require('./routes/questionRoutes'))
 app.use('/interviewers', require('./routes/interviewerRoutes'))
+app.use('/process', require('./routes/processRoutes'))
 
 //catching all bad routes and sending user home
 app.get('*', (req, res) => {

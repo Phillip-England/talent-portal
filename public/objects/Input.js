@@ -46,7 +46,11 @@ class Input {
             this.label.removeChild(this.astrick)
             this.completed = true
         }
-
+    }
+    max(number){
+        if (this.element.value.length >= number){
+            this.element.value = this.element.value.slice(0, -1)
+        }
     }
 }
 

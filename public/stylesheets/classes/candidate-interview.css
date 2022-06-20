@@ -1,13 +1,13 @@
 .candidate-interview-section{
     display: grid;
     grid-auto-columns: 100%;
+    background-color: white;
     grid-template-areas: 
         'heading'
     ;
 }
 
 .candidate-interview-section .candidate-interview-heading{
-    background-color: white;
     border-radius: 3px;
     display:grid;
     grid-area: heading;

@@ -1,0 +1,59 @@
+.add-new-steps{
+    display: grid;
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+    padding-left:var(--pad-sm);
+    padding-bottom:var(--pad-sm);
+    padding-top:var(--pad-sm);
+    grid-auto-columns: 1fr;
+    grid-template-areas: 
+        'header'
+    ;
+}
+
+.add-new-steps-active{
+    background-color: var(--main-clr);
+    color:white;
+}
+
+.add-new-steps .header{
+    color:var(--main-clr);
+    font-size: var(--rem-md);
+    font-family: var(--secondary-font);
+    padding-left: var(--pad-xs);
+    grid-area: header;
+}
+
+.add-new-steps .header-active{
+    color:white;
+}
+
+.add-new-steps .circle{
+    position: absolute;
+    height:30px;
+    margin-right: 15px;
+    /* left: 85%; */
+    aspect-ratio: 1/1;
+    align-self: center;
+    justify-self:end;
+    background-color: var(--main-clr);
+    border-radius: 100%;
+    grid-area: circle;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-new-steps .circle-active{
+    background-color: white;
+}
+
+.add-new-steps .plus-icon{
+    color:white;
+}
+
+.add-new-steps .plus-icon-active{
+    color:var(--main-clr);
+    transform: rotate(45deg);
+}

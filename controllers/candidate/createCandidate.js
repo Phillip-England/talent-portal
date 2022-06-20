@@ -55,10 +55,11 @@ const createCandidate = async (req, res) => {
         validEmail.runValidation()
         //creating a new candidate
         const newCandidate = await Candidate.create({
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            phone: phone
+            user: req.user,
+            firstName: validFirstName.value,
+            lastName: validLastName.value,
+            email: validEmail.value,
+            phone: validPhone.value
         })
         //returning new candidate as json
         res.status(200).json({

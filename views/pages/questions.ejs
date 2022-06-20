@@ -13,10 +13,40 @@
 
     <%- include('../partials/pages/multiple/nav.ejs') %> 
 
-    <p>this page will let us establish which questions we want to ask each candidate</p>
+    <section class="build-your-process default-section side-buffer">
+        <h3 class="header">Build Your Process</h3>
+        <p class="description">Create the steps to your interview process and then add relevant questions</p>
+    </section>
+
+    <section class="add-new-steps default-section side-buffer">
+        <h3 class="header">Add New Step</h3>
+        <div class="circle">
+            <i class="fa-solid fa-plus fa-lg plus-icon"></i>
+        </div>
+    </section>
+
+    <section class="step-form-wrapper default-section side-buffer">
+        <form class="step-form" action="">
+            <div class="error-wrapper">
+                <i class="fa-solid fa-circle-exclamation fa-lg exclamation-icon"></i>
+                    <p class="error-message">Error Message</p>
+            </div>
+            <label class="name-label" for="stepName">Step Name</label>
+            <input class="name-input form-control required" name="stepName" type="text">
+            <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
+            <button class="submit">Submit</button>
+        </form>
+    </section>
+
+   <% process.forEach(process => { %>
+        <%=process.step%>
+   <% }) %>
 
     <!-- SERVICE FUNCTIONS -->
     <%- include('../partials/general/scripts.ejs') %>
+
+    <!-- PAGE EVENTS -->
+    <script type="module" src="../../public/events/process/onLoad.js"></script>
     
 </body>
 </html>

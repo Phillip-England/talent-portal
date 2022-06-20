@@ -1,0 +1,12 @@
+const express = require('express')
+const router = express.Router()
+const authUser = require('../middleware/authUser')
+const csurf = require('csurf')
+const csrfProtection = csurf({cookie: {httpOnly: true}})
+
+const createStep = require('../controllers/process/createStep')
+
+router.post('/create', authUser, csrfProtection, createStep)
+
+
+module.exports = router

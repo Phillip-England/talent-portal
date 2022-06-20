@@ -1,0 +1,26 @@
+.build-your-process{
+    display:grid;
+    background-color: white;
+    grid-auto-columns: 1fr;
+    border-radius: 5px;
+    padding:var(--pad-sm);
+    grid-template-areas: 
+        'header'
+        'description'
+    ;
+}
+
+.build-your-process .header{
+    font-family: var(--secondary-font);
+    font-size:var(--rem-md);
+    grid-area: header;
+    color:var(--main-clr);
+    padding-left: var(--pad-xs);
+}
+
+.build-your-process .description{
+    font-family:var(--primary-font);
+    font-size:var(--rem-sm);
+    padding-left: var(--pad-xs);
+    grid-area: description;
+}
