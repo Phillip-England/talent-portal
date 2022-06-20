@@ -19,34 +19,51 @@
     </section>
 
     <section class="add-new-steps default-section side-buffer">
-        <h3 class="header">Add New Step</h3>
-        <div class="circle">
-            <i class="fa-solid fa-plus fa-lg plus-icon"></i>
-        </div>
-    </section>
-
-    <section class="step-form-wrapper default-section side-buffer">
         <form class="step-form" action="">
+            <h3 class="header">Add a New Step</h3>
             <div class="error-wrapper">
                 <i class="fa-solid fa-circle-exclamation fa-lg exclamation-icon"></i>
                     <p class="error-message">Error Message</p>
             </div>
-            <label class="name-label" for="stepName">Step Name</label>
+            <label class="name-label" for="stepName">Name</label>
             <input class="name-input form-control required" name="stepName" type="text">
             <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
             <button class="submit">Submit</button>
         </form>
     </section>
 
-   <% process.forEach(process => { %>
-        <%=process.step%>
-   <% }) %>
+    <section>
+        <% steps.forEach(step => { %>
+            <div class="step-wrapper default-section side-buffer">
+                <h3 class="step-name"><%=step.name%></h3>
+                <i class="fa-solid fa-angle-down open-icon"></i>
+                <form class="question-form">
+                    <h4 class="form-header">Add a Question</h4>
+                    <div class="error-wrapper">
+                        <i class="fa-solid fa-circle-exclamation fa-lg exclamation-icon"></i>
+                        <p class="error-message">Error Message</p>
+                    </div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name">
+                    <label for="question">Question</label>
+                    <input type="text" name="question">
+                    <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
+                    <button class="submit">Submit</button>
+                </form>
+                <div class="action-bar">
+                    <i class="fa-solid fa-pen fa-lg action-icons"></i>
+                    <i class="fa-solid fa-trash-can fa-lg action-icons"></i>
+                </div>
+            </div>
+        <% }) %>
+    </section>
+
 
     <!-- SERVICE FUNCTIONS -->
     <%- include('../partials/general/scripts.ejs') %>
 
     <!-- PAGE EVENTS -->
-    <script type="module" src="../../public/events/process/onLoad.js"></script>
+    <script type="module" src="../../public/events/questions/onLoad.js"></script>
     
 </body>
 </html>

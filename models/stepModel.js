@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
-const processSchema = mongoose.Schema({
+const stepSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    step: {
+    name: {
         type: String
     }
 },
@@ -13,4 +13,4 @@ const processSchema = mongoose.Schema({
     timestamps: true,
 })
 
-module.exports = mongoose.model('Process', processSchema)
+module.exports = mongoose.model('Step', stepSchema)

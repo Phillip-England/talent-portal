@@ -1,10 +1,11 @@
-const Process = require('../../models/processModel')
+const Step = require('../../models/stepModel')
 const Validate = require('../../service/objects/Validate')
 const chars = require('../../service/chars')
 
 const createStep = async (req, res) => {
     try {
         let {stepName} = req.body
+        console.log(stepName)
         let validStepName = new Validate(stepName, 'Step Name')
         validStepName.setConstraints({
             maxLength: 30,
@@ -16,18 +17,18 @@ const createStep = async (req, res) => {
             whiteListError: 'Step name must only contain letters and spaces'
         })
         validStepName.runValidation()
-        let stepExists = await Process.findOne({step:validStepName.value})
+        let stepExists = await Step.findOne({name:validStepName.value})
         if (stepExists) {
             throw new Error('This step already exists')
         }
-        let newStep = await Process.create({
+        let newStep = await Step.create({
             user: req.user,
-            step: validStepName.value
+            name: validStepName.value
         })
         res.status(200).json({
-            name: newStep
+            step: newStep
         })
-        // await Process.deleteMany({})
+        // await Step.deleteMany({})
     } catch (error) {
         res.status(400).json({
             error: error.message

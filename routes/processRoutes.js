@@ -4,7 +4,7 @@ const authUser = require('../middleware/authUser')
 const csurf = require('csurf')
 const csrfProtection = csurf({cookie: {httpOnly: true}})
 
-const createStep = require('../controllers/process/createStep')
+const createStep = require('../controllers/steps/createStep')
 
 router.post('/create', authUser, csrfProtection, createStep)
 

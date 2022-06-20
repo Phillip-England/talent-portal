@@ -50,11 +50,22 @@ button{
     --rem-lg:1.5rem;
     --rem-xl:1.75rem;
     /*PADDING*/
+    --pad-xxs:5px;
     --pad-xs:10px;
     --pad-sm:15px;
+    --pad-md:20px;
     /*MARGIN*/
     --mar-xxs:5px;
     --mar-xs:10px;
     --mar-sm:15px;
-}
+    /*FONT SIZE*/
+    --font-xxs:0.7rem;
+    --font-xs:0.8rem;
+    --font-sm:0.9rem;
+    --font-md:1rem;
+    --font-lg:1.1rem;
+    --font-xl:1.2rem;
+    --font-xxl:1.3rem;
+
+}   
 

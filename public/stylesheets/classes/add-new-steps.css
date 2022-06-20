@@ -1,15 +1,9 @@
 .add-new-steps{
-    display: grid;
     background-color: white;
     border-radius: 5px;
-    position: relative;
-    padding-left:var(--pad-sm);
-    padding-bottom:var(--pad-sm);
-    padding-top:var(--pad-sm);
-    grid-auto-columns: 1fr;
-    grid-template-areas: 
-        'header'
-    ;
+    padding: var(--pad-sm);
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .add-new-steps-active{
@@ -21,39 +15,67 @@
     color:var(--main-clr);
     font-size: var(--rem-md);
     font-family: var(--secondary-font);
-    padding-left: var(--pad-xs);
-    grid-area: header;
+    margin-bottom: var(--mar-xxs);
 }
 
-.add-new-steps .header-active{
-    color:white;
+
+.add-new-steps .step-form{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        ''
+    ;
 }
 
-.add-new-steps .circle{
-    position: absolute;
-    height:30px;
-    margin-right: 15px;
-    /* left: 85%; */
-    aspect-ratio: 1/1;
-    align-self: center;
-    justify-self:end;
+.add-new-steps .name-label{
+    font-family: var(--secondary-font);
+    font-size: var(--rem-xs);
+}
+
+.add-new-steps .name-input{
+    font-family: var(--secondary-font);
+    font-size: var(--rem-md);
+    margin-bottom: var(--mar-xs);
+    border: none;
+    background-color: var(--gray);
+}
+
+.add-new-steps .name-input:hover{
+    outline: none;
+    background-color: var(--darkgray);
+}
+
+.add-new-steps .submit{
+    font-family: var(--secondary-font);
+    font-size: var(--rem-sm);
+    width: fit-content;
+    justify-self: right;
     background-color: var(--main-clr);
-    border-radius: 100%;
-    grid-area: circle;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.add-new-steps .circle-active{
-    background-color: white;
-}
-
-.add-new-steps .plus-icon{
     color:white;
+    border:none;
+    border-radius: 3px;
+    padding-left:var(--pad-xs);
+    padding-right:var(--pad-xs);
 }
 
-.add-new-steps .plus-icon-active{
-    color:var(--main-clr);
-    transform: rotate(45deg);
+.add-new-steps .error-wrapper{
+    background-color: var(--main-clr);
+    color:white;
+    border-radius: 5px;
+    display: flex;
+    padding:var(--pad-sm);
+    margin-bottom: var(--mar-sm);
+    display: none;
+}
+
+.add-new-steps .error-wrapper-active{
+    display:flex;
+}
+
+.add-new-steps .exclamation-icon{
+    align-self: center;
+}
+
+.add-new-steps .error-message{
+    padding-left: var(--pad-sm);
 }

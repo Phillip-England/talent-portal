@@ -1,11 +1,10 @@
-const Process = require('../../models/processModel')
+const Step = require('../../models/stepModel')
 
 const getQuestionPage = async (req, res) => {
-    let process = await Process.find({user:req.user})
-    console.log(process)
+    let steps = await Step.find({user:req.user})
     res.render('questions.ejs', {
         csrfToken: req.csrfToken(),
-        process: process
+        steps: steps
     })
 }
 
