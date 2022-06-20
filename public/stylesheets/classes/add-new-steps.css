@@ -18,7 +18,6 @@
     margin-bottom: var(--mar-xxs);
 }
 
-
 .add-new-steps .step-form{
     display: grid;
     grid-template-columns: 1fr;

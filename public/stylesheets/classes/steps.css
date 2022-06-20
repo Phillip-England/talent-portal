@@ -7,6 +7,7 @@
     grid-template-areas: 
         'step-name open-close-icons'
         'form form'
+        'questions questions'
         'action action'
     ;
 }
@@ -56,13 +57,16 @@
 }
 
 .step-wrapper .error-wrapper{
-    grid-area: error;
     background-color: var(--main-clr);
     border-radius: 5px;
     color:white;
-    display: flex;
-    padding: var(--pad-sm);
+    padding: var(--pad-xs);
+    margin-bottom: var(--mar-sm);
     display: none;
+}
+
+.step-wrapper .error-wrapper-active{
+    display:flex;
 }
 
 .step-wrapper .exclamation-icon{
@@ -117,4 +121,31 @@
 
 .step-wrapper .action-icons{
     color:var(--main-clr);
+}
+
+.step-wrapper .all-questions-wrapper{
+    grid-area:questions;
+    /* border-bottom: solid var(--gray) 1px; */
+    /* padding: var(--pad-sm); */
+}
+
+.step-wrapper .question-wrapper{
+    display:grid;
+    grid-template-columns: 10fr 1fr;
+    border-bottom: solid var(--gray) 1px;
+    padding: var(--pad-sm);
+}
+
+.step-wrapper .question-name{
+    font-family:var(--primary-font);
+    font-size:var(--font-sm);
+    align-self: center;
+}
+
+.step-wrapper .delete-question{
+    align-self: center;
+    justify-self: end;
+    color:var(--main-clr);
+    /* align-items: end; */
+    /* justify-content: end; */
 }

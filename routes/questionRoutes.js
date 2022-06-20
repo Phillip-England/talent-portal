@@ -4,12 +4,11 @@ const authUser = require('../middleware/authUser')
 const csurf = require('csurf')
 const csrfProtection = csurf({cookie: {httpOnly: true}})
 
-//controllers
 const getQuestionPage = require('../controllers/question/getQuestionPage')
+const createQuestion = require('../controllers/question/createQuestion')
 
-//GET
 router.get('/', authUser, csrfProtection, getQuestionPage)
 
-//POST
+router.post('/create/:step', authUser, csrfProtection, createQuestion)
 
 module.exports = router

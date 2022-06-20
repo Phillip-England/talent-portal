@@ -5,19 +5,21 @@ class Validate {
         this.value = value
         this.name = name
     }
-    setConstraints({maxLength, minLength, required, whiteList, noRepeat} = {}){
+    async setConstraints({maxLength, minLength, required, whiteList, noRepeat, unique} = {}){
         this.maxLength = maxLength //number
         this.minLength = minLength //number
         this.required = required //boolean
         this.whiteList = whiteList //array
         this.noRepeatList = noRepeat //array
+        this.unique = unique
     }
-    setErrorMessages({maxLengthError, minLengthError, requiredError, whiteListError, noRepeatError} = {}){
+    setErrorMessages({maxLengthError, minLengthError, requiredError, whiteListError, noRepeatError, uniqueError} = {}){
         this.maxLengthError = maxLengthError,
         this.minLengthError = minLengthError,
         this.requiredError = requiredError,
         this.whiteListError = whiteListError,
-        this.noRepeatError = noRepeatError
+        this.noRepeatError = noRepeatError,
+        this.uniqueError = uniqueError
     }
     runValidation(){
         if (this.required){
@@ -35,6 +37,10 @@ class Validate {
         if (this.noRepeatList){
             this.repeatedCharacters(this.noRepeatError || `${this.name} has contains illegal repeated characters`)
         }
+        if (this.unique !== undefined && this.unique.length > 0){
+            throw new Error(this.uniqueError || 'This information has already been submitted')
+        }
+        this.value = validator.trim(this.value)
         this.value = validator.escape(this.value)
     }
     trim(){
