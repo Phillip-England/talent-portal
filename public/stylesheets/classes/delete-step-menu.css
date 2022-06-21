@@ -1,0 +1,50 @@
+.hidden-delete-step-menu-wrapper{
+    position: fixed;
+    top: 25%;
+    left: 0%;
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.hidden-delete-step-menu-wrapper-active{
+    display:flex;
+}
+
+.hidden-delete-step-menu{
+    background-color: white;
+    border-radius: 5px;
+    padding: var(--pad-sm);
+    margin: 5%;
+}
+
+.hidden-delete-step-menu-wrapper .step-name{
+    color:var(--main-clr);
+    font-family: var(--secondary-font);
+    font-size:var(--font-xl);
+}
+
+.hidden-delete-step-menu-wrapper .are-you-sure{
+    font-family:var(--primary-font);
+    font-size:var(--font-sm);
+    margin-bottom:var(--mar-sm);
+}
+
+.hidden-delete-step-menu-wrapper .button-wrapper{
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.hidden-delete-step-menu-wrapper button{
+    border:none;
+    background-color: var(--main-clr);
+    color:white;
+    border-radius: 5px;
+    padding-top: var(--pad-xxs);
+    padding-bottom: var(--pad-xxs);
+    padding-left: var(--pad-xs);
+    padding-right: var(--pad-xs);
+}

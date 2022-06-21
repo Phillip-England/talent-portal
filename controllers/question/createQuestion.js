@@ -13,7 +13,6 @@ const createQuestion = async (req, res) => {
             whiteList: chars.whitelistAlpha().concat(chars.whitelistNumbers(), ['?']),
             unique: await Question.find({user: req.user, name: question, step: req.params.step})
         })
-        console.log(validQuestion.unique)
         validQuestion.setErrorMessages({
             whiteListError: 'Questions must contain only letters, numbers and question marks',
             uniqueError: 'This question has already been created'

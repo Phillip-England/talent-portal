@@ -1,11 +1,9 @@
 import {qs, qsa} from '../../../public/service/dom.js'
-import ToggleFactory from '../../objects/ToggleFactory.js'
 import Form from '../../objects/Form.js'
 
 const newQuestionForm = async () => {
     
     let interviewStepSection = qs('.interview-steps')
-    let toggleFactory = new ToggleFactory()
 
     let questionForms = []
     let questionFormElements = qsa('.question-form', interviewStepSection)
@@ -27,7 +25,6 @@ const newQuestionForm = async () => {
                 form.displayErrorWrapper(form.errorWrapper, 'error-wrapper-active')
                 form.setErrorMessage(form.errorMessage, res.error)
                 form.load(qs('.main-loading-icon'), 'main-loader-active')
-                console.log(res)
                 return
             }
             form.hideErrorWrapper(form.errorWrapper, 'error-wrapper-active')
@@ -35,7 +32,6 @@ const newQuestionForm = async () => {
         })
     }
 
-    console.log(questionForms)
 
 }
 

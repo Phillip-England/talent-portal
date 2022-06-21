@@ -9,62 +9,81 @@
 </head>
 <body>
 
-    <%- include('../partials/general/loading.ejs') %> 
+    <div class="questions-page page-general">
 
-    <%- include('../partials/pages/multiple/nav.ejs') %> 
+        <div class="page-overlay"></div>
 
-    <section class="build-your-process default-section side-buffer">
-        <h3 class="header">Build Your Process</h3>
-        <p class="description">Create the steps to your interview process and then add relevant questions</p>
-    </section>
+        <%- include('../partials/general/loading.ejs') %> 
 
-    <section class="add-new-steps default-section side-buffer">
-        <form class="step-form" action="">
-            <h3 class="header">Add a New Step</h3>
-            <div class="error-wrapper">
-                <i class="fa-solid fa-circle-exclamation fa-lg exclamation-icon"></i>
-                    <p class="error-message">Error Message</p>
-            </div>
-            <label class="name-label" for="stepName">Name</label>
-            <input class="name-input form-control required" name="stepName" type="text">
-            <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
-            <button class="submit">Submit</button>
-        </form>
-    </section>
+        <%- include('../partials/pages/multiple/nav.ejs') %> 
 
-    <section class="interview-steps">
-        <% steps.forEach(step => { %>
-            <div class="step-wrapper default-section side-buffer">
-                <h3 class="step-name"><%=step.name%></h3>
-                <i class="fa-solid fa-angle-down open-icon"></i>
-                <form class="question-form" id="<%=step._id%>">
-                    <h4 class="form-header">Add a Question</h4>
-                    <div class="error-wrapper">
-                        <i class="fa-solid fa-circle-exclamation fa-lg exclamation-icon"></i>
+        <section class="build-your-process default-section side-buffer">
+            <h3 class="header">Build Your Process</h3>
+            <p class="description">Create the steps to your interview process and then add relevant questions</p>
+        </section>
+    
+        <section class="add-new-steps default-section side-buffer">
+            <form class="step-form" action="">
+                <h3 class="header">Add a New Step</h3>
+                <div class="error-wrapper">
+                    <i class="fa-solid fa-circle-exclamation fa-lg exclamation-icon"></i>
                         <p class="error-message">Error Message</p>
-                    </div>
-                    <label for="question">Question</label>
-                    <input class='form-control required' type="text" name="question">
-                    <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
-                    <button class="submit">Submit</button>
-                </form>
-                <div class="all-questions-wrapper">
-                    <% questions.forEach(question => { %>
-                            <% if (String(step._id) === String(question.step)) { %>
-                                <div class="question-wrapper">
-                                    <p class="question-name"><%=question.name%></p>
-                                    <i class="fa-solid fa-circle-xmark delete-question"></i>
-                                </div>
-                            <% } %>
-                    <% }) %>
                 </div>
-                <div class="action-bar">
-                    <i class="fa-solid fa-pen fa-lg action-icons"></i>
-                    <i class="fa-solid fa-trash-can fa-lg action-icons"></i>
+                <label class="name-label" for="stepName">Name</label>
+                <input class="name-input form-control required" name="stepName" type="text">
+                <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
+                <button class="submit">Submit</button>
+            </form>
+        </section>
+    
+        <section class="interview-steps">
+            <% steps.forEach(step => { %>
+                <div class="step-wrapper default-section side-buffer">
+                    <h3 class="step-name"><%=step.name%></h3>
+                    <i class="fa-solid fa-angle-down open-icon"></i>
+                    <form class="question-form" id="<%=step._id%>">
+                        <h4 class="form-header">Add a Question</h4>
+                        <div class="error-wrapper">
+                            <i class="fa-solid fa-circle-exclamation fa-lg exclamation-icon"></i>
+                            <p class="error-message">Error Message</p>
+                        </div>
+                        <label for="question">Question</label>
+                        <input class='form-control required' type="text" name="question">
+                        <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
+                        <button class="submit">Submit</button>
+                    </form>
+                    <div class="all-questions-wrapper">
+                        <% questions.forEach(question => { %>
+                                <% if (String(step._id) === String(question.step)) { %>
+                                    <div class="question-wrapper">
+                                        <p class="question-name"><%=question.name%></p>
+                                        <i class="fa-solid fa-circle-xmark delete-question" id="<%=question._id%>"></i>
+                                    </div>
+                                <% } %>
+                        <% }) %>
+                    </div>
+                    <div class="action-bar">
+                        <i class="fa-solid fa-pen fa-lg action-icons"></i>
+                        <i class="fa-solid fa-trash-can fa-lg action-icons delete-step-icon" stepName="<%=step.name%>" id="<%=step._id%>"></i>
+                    </div>
+                </div>
+            <% }) %>
+        </section>
+    
+        <section class="hidden-delete-step-menu-wrapper">
+            <div class="hidden-delete-step-menu">
+                <h3 class="step-name">Step Name</h3>
+                <p class="are-you-sure">Are you sure you want to delete this step?</p>
+                <div class="button-wrapper">
+                    <button class="delete">Delete</button>
+                    <button class="cancel">Cancel</button>
                 </div>
             </div>
-        <% }) %>
-    </section>
+        </section>
+
+    </div>
+
+    
 
 
     <!-- SERVICE FUNCTIONS -->

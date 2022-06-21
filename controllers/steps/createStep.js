@@ -5,7 +5,6 @@ const chars = require('../../service/chars')
 const createStep = async (req, res) => {
     try {
         let {stepName} = req.body
-        console.log(stepName)
         let validStepName = new Validate(stepName, 'Step Name')
         validStepName.setConstraints({
             maxLength: 30,

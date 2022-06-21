@@ -3,7 +3,7 @@ import Form from '../../objects/Form.js'
 
 const newStepForm = async () => {
     let stepForm = new Form(qs('.step-form'))
-    stepForm.props('postUrl', '/process/create')
+    stepForm.props('postUrl', '/steps/create')
     stepForm.props('errorWrapper', qs('.error-wrapper', stepForm.element))
     stepForm.props('errorMessage', qs('.error-message', stepForm.element))
     stepForm.initInputs('form-control')

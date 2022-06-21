@@ -1,0 +1,21 @@
+const Step = require('../../models/stepModel')
+const Question = require('../../models/questionModel')
+
+const deleteStep = async (req, res) => {
+    try {
+        let deletedStep = await Step.findByIdAndDelete(req.params.step)
+        let associatedQuestions = await Question.deleteMany({step:req.params.step})
+        if (!deletedStep) {
+            throw new Error('Step has already been deleted')
+        }
+        res.status(200).json({
+            deletedStep: deletedStep
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
+module.exports = deleteStep
