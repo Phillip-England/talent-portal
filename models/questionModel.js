@@ -11,7 +11,7 @@ const questionSchema = mongoose.Schema({
     },
     name: {
         type: String
-    }
+    },
 },
 {
     timestamps: true,

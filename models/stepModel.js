@@ -7,7 +7,10 @@ const stepSchema = mongoose.Schema({
     },
     name: {
         type: String
-    }
+    },
+    order: {
+        type: Number
+    },
 },
 {
     timestamps: true,

@@ -20,14 +20,15 @@ const createStep = async (req, res) => {
         if (stepExists) {
             throw new Error('This step already exists')
         }
+        let allSteps = await Step.find({user:req.user})
         let newStep = await Step.create({
             user: req.user,
-            name: validStepName.value
+            name: validStepName.value,
+            order: allSteps.length + 1
         })
         res.status(200).json({
             step: newStep
         })
-        // await Step.deleteMany({})
     } catch (error) {
         res.status(400).json({
             error: error.message

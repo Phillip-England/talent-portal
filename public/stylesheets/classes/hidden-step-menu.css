@@ -1,4 +1,4 @@
-.hidden-delete-step-menu-wrapper{
+.hidden-step-menu-wrapper{
     position: fixed;
     top: 25%;
     left: 0%;
@@ -9,36 +9,46 @@
     z-index: 2;
 }
 
-.hidden-delete-step-menu-wrapper-active{
+.hidden-step-menu-wrapper-active{
     display:flex;
 }
 
-.hidden-delete-step-menu{
+.hidden-step-menu-wrapper .hidden-menu{
     background-color: white;
     border-radius: 5px;
     padding: var(--pad-sm);
     margin: 5%;
 }
 
-.hidden-delete-step-menu-wrapper .step-name{
+.hidden-step-menu-wrapper .step-name{
     color:var(--main-clr);
     font-family: var(--secondary-font);
     font-size:var(--font-xl);
 }
 
-.hidden-delete-step-menu-wrapper .are-you-sure{
+.hidden-step-menu-wrapper .are-you-sure{
     font-family:var(--primary-font);
     font-size:var(--font-sm);
     margin-bottom:var(--mar-sm);
+    display: none;
 }
 
-.hidden-delete-step-menu-wrapper .button-wrapper{
-    display:flex;
+.hidden-step-menu-wrapper .are-you-sure-active{
+    display:block;
+}
+
+
+.hidden-step-menu-wrapper .button-wrapper{
+    display:none;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.hidden-delete-step-menu-wrapper button{
+.hidden-step-menu-wrapper .button-wrapper-active{
+    display:flex;
+}
+
+.hidden-step-menu-wrapper .cancel, .delete{
     border:none;
     background-color: var(--main-clr);
     color:white;
@@ -47,4 +57,12 @@
     padding-bottom: var(--pad-xxs);
     padding-left: var(--pad-xs);
     padding-right: var(--pad-xs);
+}
+
+.hidden-step-menu-wrapper .step-edit-form{
+    display:none;
+}
+
+.hidden-step-menu-wrapper .step-edit-form-active{
+    display:grid;
 }

@@ -26,7 +26,7 @@
     ;
 }
 
-.add-new-steps .name-label{
+.add-new-steps label{
     font-family: var(--secondary-font);
     font-size: var(--rem-xs);
 }
