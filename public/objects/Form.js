@@ -14,7 +14,10 @@ class Form {
         for (let x = 0; x < inputElements.length; x++){
             inputObj = new Input(inputElements[x])
             inputObj.assignLabel(this.element.querySelector(`label[for='${inputObj.name}']`))
-            if (inputObj.element.classList.contains('required')) inputObj.require()
+            console.log(inputObj.element.value)
+            if (inputObj.element.classList.contains('required') && inputObj.element.value !== '') {
+                inputObj.require()
+            }
             this.inputs.push(inputObj)
         }
     }

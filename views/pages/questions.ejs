@@ -79,20 +79,16 @@
                     <button class="cancel">Cancel</button>
                 </div>
                 <form action="" class="step-edit-form">
-                    <h1>got me!</h1>
                     <label for="stepName">Name</label>
-                    <input type="text" name=stepName" class="step-name-input form-control required">
+                    <input type="text" name="stepName" class="step-name-input form-control required">
                     <label for="order">Order</label>
                     <select class="form-control required" name="order">
-                        <option value="" selected class="step-selected-option"></option>
-                        <%let count = 1%>
+                        <option value="" selected></option>
                         <% steps.forEach(step => { %>
-                            <% console.log(count == step.order) %> 
-                            <option value=""><%=count%></option>
-                            <%count++%>
+                            <option value="<%=step.order%>"><%=step.order%></option>
                         <% }) %>
                     </select>
-                    <input class="form-control" type="hidden" name="_csrf" value=<%=csrfToken%>>
+                    <input type="hidden" name="_csrf" value=<%=csrfToken%>>
                     <div class="edit-form-button-wrapper">
                         <button class="submit">Update</button>
                         <button class="cancel-edit-form-button" type="button">Cancel</button>

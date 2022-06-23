@@ -16,7 +16,7 @@
 .hidden-step-menu-wrapper .hidden-menu{
     background-color: white;
     border-radius: 5px;
-    padding: var(--pad-sm);
+    padding: var(--pad-md);
     margin: 5%;
 }
 
@@ -24,6 +24,7 @@
     color:var(--main-clr);
     font-family: var(--secondary-font);
     font-size:var(--font-xl);
+    padding-bottom:var(--pad-xxs);
 }
 
 .hidden-step-menu-wrapper .are-you-sure{
@@ -65,4 +66,40 @@
 
 .hidden-step-menu-wrapper .step-edit-form-active{
     display:grid;
+}
+
+.hidden-step-menu-wrapper .step-edit-form label{
+    font-size:var(--font-xs);
+    font-family:var(--primary-font);
+}
+
+.hidden-step-menu-wrapper .step-edit-form input, select{
+    background-color:var(--gray);
+    border:none;
+    font-size:var(--font-sm);
+    color:var(--main-clr);
+    margin-bottom:var(--mar-xxs);
+    font-family:var(--secondary-font);
+}
+
+.hidden-step-menu-wrapper .step-edit-form input:hover, select:hover{
+    background-color: var(--darkgray);
+    outline:none;
+}
+
+.hidden-step-menu-wrapper .edit-form-button-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding:var(--pad-xxs);
+    margin-top:var(--mar-xs);
+}
+
+.hidden-step-menu-wrapper .edit-form-button-wrapper button{
+    color:white;
+    background-color: var(--main-clr);
+    font-family:var(--secondary-font);
+    font-size:var(--font-sm);
+    border: none;
+    border-radius: 3px;
 }

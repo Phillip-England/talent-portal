@@ -1,5 +1,6 @@
 import Toggle from '../../objects/Toggle.js'
 import {qs, qsa} from '../../service/dom.js'
+import Form from '../../objects/Form.js'
 
 const editStep = async () => {
     let questionPage = qs('.questions-page')
@@ -11,18 +12,15 @@ const editStep = async () => {
     let editFormButtonWrapperElement = qs('.edit-form-button-wrapper', hiddenMenuElement)
     let cancelEditFormButton = qs('.cancel-edit-form-button', editFormButtonWrapperElement)
     let stepNameInput = qs('.step-name-input', editFormElement)
-    let stepSelectedOption = qs('.step-selected-option', editFormElement)
-
+    
     let hiddenMenu = new Toggle(hiddenMenuElement, 'hidden-step-menu-wrapper-active')
     let editForm = new Toggle(editFormElement, 'step-edit-form-active')
     let pageOverlay = new Toggle(pageOverlayElement, 'page-overlay-active')
-
 
     for (let x = 0; x < editStepIcons.length; x++){
         editStepIcons[x].addEventListener('click', (event) => {
             stepNameElement.innerText = event.target.getAttribute('stepName')
             stepNameInput.value = event.target.getAttribute('stepName')
-            stepSelectedOption.innerText = event.target.getAttribute('stepOrder')
             pageOverlay.invert()
             hiddenMenu.invert()
             editForm.invert()
@@ -33,6 +31,15 @@ const editStep = async () => {
         pageOverlay.invert()
         hiddenMenu.invert()
         editForm.invert()
+    })
+
+    let form = new Form(editFormElement)
+    form.initInputs('form-control')
+    form.onInput((event, input) => {
+        input.require()
+    })
+    form.onSubmit((event) => {
+        
     })
 
 }
